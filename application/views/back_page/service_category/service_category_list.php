@@ -12,7 +12,7 @@
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">Service Category List</h3>
-          <a style="float:right"  href="<?php //echo base_url("index.php/Product_category/product_category_add_view");?>" class="btn btn-primary">
+          <a style="float:right"  href="<?php echo base_url("index.php/service_category/service_category_add_view");?>" class="btn btn-primary">
             <i class="glyphicon glyphicon-send"> </i> Add Service Category
           </a>
         </div>
