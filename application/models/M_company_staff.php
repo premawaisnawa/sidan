@@ -33,11 +33,11 @@ class M_company_staff extends CI_Model{
     return $query;
   }
 
-  function add_service_category($data) {
-    $this->db->insert('tbservicecategory',$data);
+  function add_company_staff($data) {
+    $this->db->insert('tbcompanystaff',$data);
   }
 
-  function edit_service_category($data,$code) {
+  function edit_company_staff($data,$code) {
              $this->db->where('Code',$code );
              $this->db->update("tbservicecategory",$data);
   }

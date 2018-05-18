@@ -22,17 +22,17 @@ class Company_staff extends CI_Controller{
     $this->load->view('template/back_page/company/foot');
   }
 
-  function service_category_add_view()
+  function company_staff_add_view()
   {
     $head_data['page_title'] = "Sidan";
     $this->load->view('template/back_page/company/head',$head_data);
     $this->load->view('template/back_page/company/navigation');
     $this->load->view('template/back_page/company/sidebar');
-    $this->load->view('back_page/service_category/service_category_add');
+    $this->load->view('back_page/company_staff/company_staff_add');
     $this->load->view('template/back_page/company/foot');
   }
 
-  function service_category_edit_view($code)
+  function company_staff_edit_view($code)
   {
      // $id_admin = $this->session->userdata('id_admin');
       // if (empty($id_admin)) {
@@ -86,37 +86,39 @@ class Company_staff extends CI_Controller{
     echo json_encode($output);
   }
 
-   function add_service_category(){
-    $get_service_category = $this->M_service_category->get_service_category("","tbservicecategory.Code DESC LIMIT 1");
-    $row = $get_service_category->row();
-    $anInt = intval($row->Code);
-    $code_oto = $anInt+1;
-    if ($code_oto < 10) {
-      $code_oto = "0".$code_oto;
-    }
+   function add_company_staff(){
+    // $get_company_staff = $this->M_company_staff->get_company_staff("","tbservicecategory.Code DESC LIMIT 1");
+    // $row = $get_company_staff->row();
+    // $anInt = intval($row->Code);
+    // $code_oto = $anInt+1;
+    // if ($code_oto < 10) {
+    //   $code_oto = "0".$code_oto;
+    // }
     $company_code = '001';
     $data = array(
-      'Code' => $code_oto,
       'CompanyCode' => $company_code,
-      'ServiceCategoryName' => $this->input->post('service_category_name'),
-      'MaxWaitingTime' => $this->input->post('max_waiting_time'),
-      'IsActive' => $this->input->post('status')
+      'Email' => $this->input->post('company_staff_email'),
+      'Password' => $this->input->post('company_staff_password'),
+      'FirstName' => $this->input->post('company_staff_firstname'),
+      'LastName' => $this->input->post('company_staff_lastname'),
+      'PhoneNumber' => $this->input->post('company_staff_phonenumber'),
+      'ProfileImage' => $this->input->post('company_staff_profileimage')
     );
-    $this->M_service_category->add_service_category($data);
+    $this->M_company_staff->add_company_staff($data);
     // $this->session->set_flashdata('msg', 'Add Service Category successfully ...');
-    redirect('Service_category/service_category_list_view');
+    redirect('company_staff/company_staff_list_view');
   }
 
-   function edit_service_category(){
-      $service_category_code = $this->input->post('service_category_code');
+   function edit_company_staff(){
+      $company_staff_code = $this->input->post('company_staff_code');
       $data = array(
-        'ServiceCategoryName' => $this->input->post('service_category_name'),
+        'ServiceCategoryName' => $this->input->post('company_staff_name'),
       'MaxWaitingTime' => $this->input->post('max_waiting_time'),
       'IsActive' => $this->input->post('status')
     );
-      $this->M_service_category->edit_service_category($data,$service_category_code) ;
+      $this->M_company_staff->edit_company_staff($data,$company_staff_code) ;
       // $this->session->set_flashdata('msg', 'Edit Product Category successfully...');
-    redirect('Service_category/service_category_list_view');
+    redirect('company_staff/company_staff_list_view');
     }
 
 }
