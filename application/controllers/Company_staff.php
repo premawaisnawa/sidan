@@ -40,15 +40,15 @@ class Company_staff extends CI_Controller{
       // }
 
 
-    $filter_value = array('user_code' => '001', 'service_category_code' => $code);
-    $get_service_category = $this->M_service_category->get_service_category($filter_value);
-    $data['data'] = $get_service_category->result();
+    $filter_value = array('user_code' => '001', 'company_staff_code' => $code);
+    $get_company_staff = $this->M_company_staff->get_company_staff($filter_value);
+    $data['data'] = $get_company_staff->result();
 
     $head_data['page_title'] = "Sidan";
     $this->load->view('template/back_page/company/head',$head_data);
     $this->load->view('template/back_page/company/navigation');
     $this->load->view('template/back_page/company/sidebar');
-    $this->load->view('back_page/service_category/service_category_edit',$data);
+    $this->load->view('back_page/company_staff/company_staff_edit',$data);
     $this->load->view('template/back_page/company/foot');
   }
 
@@ -70,7 +70,7 @@ class Company_staff extends CI_Controller{
       "FirstName" => $bar->FirstName,
       "LastName" => $bar->LastName,
       "PhoneNumber" => $bar->PhoneNumber,
-      "EditButton" => "<a class='btn btn-info' href=".base_url('index.php/Service_category/company_staff_edit_view/').$bar->Id.">Edit
+      "EditButton" => "<a class='btn btn-info' href=".base_url('index.php/company_staff/company_staff_edit_view/').$bar->Id.">Edit
       <span class='fa fa-fw fa-eye' >
       </span>
       </a>"
@@ -112,9 +112,12 @@ class Company_staff extends CI_Controller{
    function edit_company_staff(){
       $company_staff_code = $this->input->post('company_staff_code');
       $data = array(
-        'ServiceCategoryName' => $this->input->post('company_staff_name'),
-      'MaxWaitingTime' => $this->input->post('max_waiting_time'),
-      'IsActive' => $this->input->post('status')
+        'Email' => $this->input->post('company_staff_email'),
+      'Password' => $this->input->post('company_staff_password'),
+      'FirstName' => $this->input->post('company_staff_firstname'),
+      'LastName' => $this->input->post('company_staff_lastname'),
+      'PhoneNumber' => $this->input->post('company_staff_phonenumber'),
+      'ProfileImage' => $this->input->post('company_staff_profileimage')
     );
       $this->M_company_staff->edit_company_staff($data,$company_staff_code) ;
       // $this->session->set_flashdata('msg', 'Edit Product Category successfully...');
