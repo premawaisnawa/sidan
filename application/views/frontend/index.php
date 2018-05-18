@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Selamat Datang di SIDAN</title>
-    <link rel="stylesheet" href="dist/styles.css">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <script src="dist/bundle.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url()?>/public/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <script src="<?php echo base_url()?>/bundle.js"></script>
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark mb-0" style="background-color: black">
@@ -53,7 +53,7 @@
                             Doloribus minima praesentium quaerat quod rerum ullam?</p>
                     </div>
                     <div>
-                        <img src="public/images/responsive.jpg" class="img-fluid">
+                        <img src="<?php echo base_url() ?>/public/images/responsive.jpg" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                             Doloribus minima praesentium quaerat quod rerum ullam?</p>
                     </div>
                     <div>
-                        <img src="public/images/responsive.jpg" class="img-fluid">
+                        <img src="<?php echo base_url() ?>/public/images/responsive.jpg" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                             Doloribus minima praesentium quaerat quod rerum ullam?</p>
                     </div>
                     <div>
-                        <img src="public/images/responsive.jpg" class="img-fluid">
+                        <img src="<?php echo base_url() ?>/public/images/responsive.jpg" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -159,7 +159,7 @@
         <div class="card mx-5 sidan-shadow">
             <p class="h4 text-center font-italic font-weight-bold">Project Manager</p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
-                 src="public/images/prema.jpg" alt="Card image cap">
+                 src="<?php echo base_url() ?>/public/images/prema.jpg" alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
                 <h5 class="card-title text-center font-weight-bold">Kade Prema Waisnawa</h5>
                 <p class="card-text text-justify font-italic">"Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -173,7 +173,7 @@
         <div class="card mx-5 sidan-shadow">
             <p class="h4 text-center font-italic font-weight-bold">System Analyst</p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
-                 src="public/images/budi.JPG"
+                 src="<?php echo base_url() ?>/public/images/budi.JPG"
                  alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
                 <h5 class="card-title text-center font-weight-bold">Budiman</h5>
@@ -188,7 +188,7 @@
         <div class="card mx-5 sidan-shadow">
             <p class="h4 text-center font-italic font-weight-bold">Designer</p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
-                 src="public/images/nugi.jpg" alt="Card image cap">
+                 src="<?php echo base_url() ?>/public/images/nugi.jpg" alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
                 <h5 class="card-title text-center font-weight-bold">Nugik</h5>
                 <p class="card-text text-justify font-italic">"Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -205,7 +205,7 @@
         <div class="card mx-5 sidan-shadow">
             <p class="h4 text-center font-italic font-weight-bold">Programmer</p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
-                 src="public/images/edi.jpg" alt="Card image cap">
+                 src="<?php echo base_url() ?>/public/images/edi.jpg" alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
                 <h5 class="card-title text-center font-weight-bold">I Ketut Edi Mertajaya Putra</h5>
                 <p class="card-text text-justify font-italic">"Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -219,7 +219,7 @@
         <div class="card mx-5 sidan-shadow">
             <p class="h4 text-center font-italic font-weight-bold">Programmer</p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
-                 src="public/images/budi.JPG"
+                 src="<?php echo base_url() ?>/public/images/budi.JPG"
                  alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
                 <h5 class="card-title text-center font-weight-bold">Kadek Agus Widnyana Putra</h5>
@@ -234,7 +234,7 @@
         <div class="card mx-5 sidan-shadow">
             <p class="h4 text-center font-italic font-weight-bold">Programmer</p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
-                 src="public/images/nugi.jpg" alt="Card image cap">
+                 src="<?php echo base_url() ?>/public/images/nugi.jpg" alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
                 <h5 class="card-title text-center font-weight-bold">Nugik</h5>
                 <p class="card-text text-justify font-italic">"Lorem ipsum dolor sit amet, consectetur adipisicing elit.
