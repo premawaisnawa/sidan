@@ -12,6 +12,17 @@ class Company_staff extends CI_Controller{
 		// $this->load->model(array('M_product','M_product_category','M_product_sub_category','M_pagination','M_quotation','M_quotation_detail','M_support','M_support_detail','M_date'));
 	}
 
+  function company_staff_dashboard_view(){
+    // $id_admin = $this->session->userdata('id_admin');
+    // if (empty($id_admin)) {
+    //   redirect('Home/home_view');
+    // }
+    $this->load->view('template/back_page/company_staff/head');
+    $this->load->view('template/back_page/company_staff/navigation');
+    $this->load->view('template/back_page/company_staff/sidebar');
+    $this->load->view('back_page/company_staff_dashboard');
+    $this->load->view('template/back_page/company_staff/foot');
+  }
   function company_staff_list_view()
   {
     $head_data['page_title'] = "Sidan";
