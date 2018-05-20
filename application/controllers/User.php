@@ -6,8 +6,19 @@ class User extends CI_Controller{
     parent::__construct();
     $this->load->library(array('form_validation','pagination'));
     $this->load->helper(array('form', 'url'));
-    $this->load->model(array('M_user'));
+    $this->load->model(array('M_user','M_staff'));
   }
+
+  function company_staff_profile_view()
+  {
+    $head_data['page_title'] = "Sidan";
+    $this->load->view('template/back_page/company_staff/head',$head_data);
+    $this->load->view('template/back_page/company_staff/navigation');
+    $this->load->view('template/back_page/company_staff/sidebar');
+    $this->load->view('back_page/profile_account/company_staff_profile');
+    $this->load->view('template/back_page/company_staff/foot');
+  }
+
   function company_dashboard_view(){
     // $id_admin = $this->session->userdata('id_admin');
     // if (empty($id_admin)) {
@@ -33,6 +44,22 @@ class User extends CI_Controller{
   $this->load->view('back_page/profile_account/company_profile',$data);
   $this->load->view('template/back_page/company/foot');
 }
+
+function edit_company_staff_profile_view(){
+  //$company_code = $this->session->userdata('company_code');
+  // if (empty($company_code)) {
+  //   redirect('Home/home_view');
+  // }
+  $filter_value = array('staff_code' => "1"); //ini pake session
+  $get_staff = $this->M_staff->get_staff($filter_value);
+  $data['staff'] = $get_staff->result();
+  $this->load->view('template/back_page/company_staff/head');
+  $this->load->view('template/back_page/company_staff/navigation');
+  $this->load->view('template/back_page/company_staff/sidebar');
+  $this->load->view('back_page/profile_account/company_staff_profile',$data);
+  $this->load->view('template/back_page/company_staff/foot');
+}
+
 public function edit_company_profile(){
     $company_code = "001";//$this->session->userdata('company_code');
     $config['upload_path']   = './assets/pic_file/';

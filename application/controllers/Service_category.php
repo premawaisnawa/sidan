@@ -22,6 +22,17 @@ class Service_category extends CI_Controller{
     $this->load->view('template/back_page/company/foot');
   }
 
+  function staff_service_category_list_view()
+  {
+    $head_data['page_title'] = "Sidan";
+    $this->load->view('template/back_page/company_staff/head',$head_data);
+    $this->load->view('template/back_page/company_staff/navigation');
+    $this->load->view('template/back_page/company_staff/sidebar');
+    $this->load->view('back_page/service_category/staff_service_category_list');
+    $this->load->view('template/back_page/company_staff/foot');
+  }
+
+
   function service_category_add_view()
   {
     $head_data['page_title'] = "Sidan";
@@ -105,6 +116,7 @@ class Service_category extends CI_Controller{
     // $this->session->set_flashdata('msg', 'Add Service Category successfully ...');
     redirect('Service_category/service_category_list_view');
   }
+
 
    function edit_service_category(){
       $service_category_code = $this->input->post('service_category_code');
