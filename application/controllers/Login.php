@@ -20,17 +20,13 @@ class Login extends CI_Controller{
 		$user_row = $get_user->row();
     $company_staff_row = $get_company_staff->row();
     // Admin
-		if ($user_num_rows == 1 AND $company_staff_num_rows == 0  $row->IsSupplier == 1  AND $row->IsUser == 0) {
-			//echo "supplier";exit();
-			$get_supplier = $this->M_member->get_member(0,1,$row->IdMember);
-	  	$data['supplier'] = $get_supplier->result();
-			$this->session->set_userdata('id_supplier',$row->IdMember);
-			$this->session->set_userdata('company_name',$row->CompanyName);
-			$this->session->set_userdata('profil_image',$row->ProfilImage);
-			$this->session->set_userdata('first_name',$row->FirstName);
-			redirect('Supplier/dashboard_supplier_view');
+		if ($user_num_rows == 1 AND $company_staff_num_rows == 0 AND $user_row->LevelUser == 0) {
+
+			$this->session->set_userdata('admin_code',$user_row->Code);
+			$this->session->set_userdata('profil_image',$user_row->ProfilImage);
+			// redirect('Supplier/dashboard_supplier_view');
 		}
-		elseif ($num_rows > 0 AND $row->IsSupplier == 0 AND $row->IsUser == 0) {
+		elseif ($user_num_rows == 1 AND $company_staff_num_rows == 0 AND $user_row->LevelUser == 0) {
 		//	echo "buyer";exit();
 			$get_buyer = $this->M_member->get_member(0,0,$row->IdMember);
 	  $data['buyer'] = $get_buyer->result();

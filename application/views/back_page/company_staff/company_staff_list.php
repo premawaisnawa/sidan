@@ -22,7 +22,6 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead class="text-center">
                   <tr>
-                    <th class="text-center">Company Staff Id</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">First Name</th>
                     <th class="text-center">Last Name</th>
@@ -64,7 +63,7 @@ $(document).ready(function() {
     },
     //Set column definition initialisation properties.
     "columns": [
-      {"data": "Id"},
+
       {"data": "Email"},
       {"data": "FirstName"},
       {"data": "LastName"},

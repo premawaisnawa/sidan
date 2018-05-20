@@ -3,9 +3,9 @@
         <!-- Logo -->
         <a href="<?php //echo site_url('Home/home_view/') ;?>" class="logo" style="position:fixed">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>D</b>L</span>
+          <span class="logo-mini"><b>S</b>D</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Dini</b>Laku</span>
+          <span class="logo-lg"><b>SI</b>DAN</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar  ">

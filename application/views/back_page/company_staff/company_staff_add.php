@@ -24,11 +24,6 @@
             </div>
 
              <div class="form-group">
-              <label class="control-label">Password</label>
-              <input type="text" name="company_staff_password" id="company_staff_password"  data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category name..."  class="form-control"  placeholder="">
-            </div>
-
-             <div class="form-group">
               <label class="control-label">Fist Name</label>
               <input type="text" name="company_staff_firstname" id="company_staff_firstname"  data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category name..."  class="form-control"  placeholder="">
             </div>
@@ -41,11 +36,6 @@
              <div class="form-group">
               <label class="control-label">Phone Number</label>
               <input type="text" name="company_staff_phonenumber" id="company_staff_phonenumber"  data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category name..."  class="form-control"  placeholder="">
-            </div>
-
-            <div class="form-group">
-              <label class="control-label">Profile Image</label>
-              <input type="text" name="company_staff_profileimage" id="company_staff_profileimage"  data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category name..."  class="form-control"  placeholder="">
             </div>
 
        <!--      <div class="form-group">

@@ -3,7 +3,7 @@
    <div class="btn-group btn-breadcrumb">
             <a href="#" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-home"></i></a>
              <a href="<?php echo base_url('index.php/company_staff/company_staff_list_view');?>" class="btn btn-default  btn-xs">Company Staff List</a>
-            <a  class="btn btn-default  btn-xs active">Edit Company Staff</a> 
+            <a  class="btn btn-default  btn-xs active">Edit Company Staff</a>
         </div>
 </section>
 
@@ -22,8 +22,6 @@
                             <label class="control-label">Email</label>
                             <input type="text" name="company_staff_email"  value="<?php echo $data[0]->Email; ?>"  data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category name..."  class="form-control"  placeholder="">
 
-                            <label class="control-label">Password</label>
-                            <input type="text" name="company_staff_password"  value="<?php echo $data[0]->Password; ?>"  data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category name..."  class="form-control"  placeholder="">
 
                             <label class="control-label">First Name</label>
                             <input type="text" name="company_staff_firstname"  value="<?php echo $data[0]->FirstName; ?>"  data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category name..."  class="form-control"  placeholder="">
@@ -33,9 +31,6 @@
 
                              <label class="control-label">Phone Number</label>
                             <input type="text" name="company_staff_phonenumber"  value="<?php echo $data[0]->PhoneNumber; ?>"  data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category name..."  class="form-control"  placeholder="">
-
-                             <label class="control-label">Profile Image</label>
-                            <input type="text" name="company_staff_profileimage"  value="<?php echo $data[0]->ProfileImage; ?>"  data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category name..."  class="form-control"  placeholder="">
 
                             <input type="hidden" name="company_staff_code"  value="<?php echo $data[0]->Id; ?>" class="form-control"  placeholder="">
                     </div>

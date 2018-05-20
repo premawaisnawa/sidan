@@ -6,7 +6,7 @@ class Company_staff extends CI_Controller{
 
   function __construct(){
 		parent::__construct();
-		$this->load->library(array('form_validation','pagination'));
+		$this->load->library(array('form_validation','pagination','email'));
 		$this->load->helper(array('form', 'url'));
     $this->load->model(array('M_company_staff'));
 		// $this->load->model(array('M_product','M_product_category','M_product_sub_category','M_pagination','M_quotation','M_quotation_detail','M_support','M_support_detail','M_date'));
@@ -65,7 +65,6 @@ class Company_staff extends CI_Controller{
     foreach ($baris as $bar) {
       // $is_active = ($bar->IsActive == 1) ? "Active" : "Not Active" ;
       $row = array(
-      "Id" => $bar->Id,
       "Email" => $bar->Email,
       "FirstName" => $bar->FirstName,
       "LastName" => $bar->LastName,
@@ -87,24 +86,27 @@ class Company_staff extends CI_Controller{
   }
 
    function add_company_staff(){
-    // $get_company_staff = $this->M_company_staff->get_company_staff("","tbservicecategory.Code DESC LIMIT 1");
+     //password otomatis
+    // $get_company_staff = $this->M_company_staff->get_company_staff("","tbcompanystaff.Id DESC LIMIT 1");
     // $row = $get_company_staff->row();
-    // $anInt = intval($row->Code);
-    // $code_oto = $anInt+1;
-    // if ($code_oto < 10) {
-    //   $code_oto = "0".$code_oto;
-    // }
+    // $pwd = $row->Id+1;
+    // $pwd = "pwd|".$pwd."|".time();
     $company_code = '001';
     $data = array(
       'CompanyCode' => $company_code,
       'Email' => $this->input->post('company_staff_email'),
-      'Password' => $this->input->post('company_staff_password'),
+      //'Password' => $pwd,
       'FirstName' => $this->input->post('company_staff_firstname'),
       'LastName' => $this->input->post('company_staff_lastname'),
-      'PhoneNumber' => $this->input->post('company_staff_phonenumber'),
-      'ProfileImage' => $this->input->post('company_staff_profileimage')
+      'PhoneNumber' => $this->input->post('company_staff_phonenumber')
     );
-    $this->M_company_staff->add_company_staff($data);
+    $staff_id = $this->M_company_staff->add_company_staff($data);
+    $this->email->from('marketplacesilver@gmail.com', 'marketplacesilver');
+      $this->email->to($this->input->post('company_staff_email'));
+      $this->email->subject('SIDAN Account Confirmation');
+      $this->email->message("<a href='".base_url().
+      "index.php/Company_staff/new_staff_update_password/".$staff_id.
+      "'>Confirm Your Account</a>");
     // $this->session->set_flashdata('msg', 'Add Service Category successfully ...');
     redirect('company_staff/company_staff_list_view');
   }
