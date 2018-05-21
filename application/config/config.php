@@ -23,7 +23,7 @@ date_default_timezone_set('Asia/Makassar');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/sidan/';
+$config['base_url'] = 'http://localhost:8080/sidan/';
 
 /*
 |--------------------------------------------------------------------------
