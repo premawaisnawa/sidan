@@ -23,10 +23,10 @@ class Login extends CI_Controller{
     $company_staff_row = $get_company_staff->row();
     // Admin
 		if ($user_num_rows == 1 AND $company_staff_num_rows == 0 AND $user_row->LevelUser == 0) {
- 			echo "admin";exit();
+ 			//echo "admin";exit();
 			$this->session->set_userdata('admin_code',$user_row->Code);
 			$this->session->set_userdata('profile_image',$user_row->ProfilImage);
-			// redirect('Supplier/dashboard_supplier_view');
+			 redirect('User/admin_dashboard_view');
 		}
 		elseif ($user_num_rows == 1 AND $company_staff_num_rows == 0 AND $user_row->LevelUser == 1) {
 			//echo "company";exit();
