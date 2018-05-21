@@ -1,6 +1,6 @@
 <?php
 
-class Login extends CI_Controller{
+class Login extends CI_Controller {
 
 	function __construct(){
 		//$this->CI =& get_instance();
@@ -50,7 +50,13 @@ class Login extends CI_Controller{
 	}
 
 	function login_view(){
-		$this->load->view('frontend/login');
+
+        $this->load->view('frontend/partials/header');
+
+        $this->load->view('frontend/login');
+
+        $this->load->view('frontend/partials/footer');
+		//$this->load->view('frontend/login');
 	}
 	function logout(){
 		$this->session->sess_destroy();
