@@ -5,11 +5,16 @@
 
       <div class="user-panel">
         <div class="pull-left image">
+          <img src="<?php if (empty($this->session->userdata('profile_image')) OR $this->session->userdata('profile_image') == "") {
+                                    echo base_url().'assets/icon/upload-icon.png';
+                                }else{
+                                    echo base_url().'assets/pic_file/'.$this->session->userdata('profile_image');
 
+                                }?>" width="75" class="img-circle" alt="User Image">
 
         </div>
         <div class="pull-left info ">
-          <h5 class=""><b ><?php //echo $this->session->userdata('company_name'); ?></b></h5>
+          <h5 class=""><b ><?php echo $this->session->userdata('company_name'); ?></b></h5>
         </div>
       </div>
 

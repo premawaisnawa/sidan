@@ -23,15 +23,25 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="<?php if (empty($this->session->userdata('profile_image')) OR $this->session->userdata('profile_image') == "") {
+                                echo base_url().'assets/icon/upload-icon.png';
+                            }else{
+                                echo base_url().'assets/pic_file/'.$this->session->userdata('profile_image');
 
+                            }?>" height="22" class="img-circle" alt="User Image">
                   <span class="hidden-xs"><?php //echo $this->session->userdata('company_name'); ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
+                    <img src="<?php if (empty($this->session->userdata('profile_image')) OR $this->session->userdata('profile_image') == "") {
+                                echo base_url().'assets/icon/upload-icon.png';
+                            }else{
+                                echo base_url().'assets/pic_file/'.$this->session->userdata('profile_image');
 
+                            }?>" height="160" class="img-circle" alt="User Image">
                     <p>
-                      <?php //echo $this->session->userdata('first_name'); ?> - <b><?php //echo $this->session->userdata('company_name'); ?></b>
+                      <?php echo $this->session->userdata('first_name'); ?> - <b><?php echo $this->session->userdata('company_name'); ?></b>
                       <!-- <small>Member since Nov. 2012</small> -->
                     </p>
                   </li>

@@ -6,54 +6,52 @@ class Login extends CI_Controller{
 		//$this->CI =& get_instance();
 		parent::__construct();
 		//$this->load->library( 'create_menu');
-		$this->load->model(array('M_user,M_company_staff'));
+		$this->load->helper(array('url'));
+		$this->load->model(array('M_user','M_company_staff'));
 	}
 
 
 	function login(){
 		$email = $this->input->post('email');
 		$password = sha1($this->input->post('password'));
-		$get_user = $this->M_user->get_user();
-    $get_company_staff = $this->M_company_staff->get_company_staff();
+		$filter_value = array('email' => $email,"password" => $password);
+		$get_user = $this->M_user->get_user($filter_value);
+    $get_company_staff = $this->M_company_staff->get_company_staff($filter_value);
 		$user_num_rows = $get_user->num_rows();
     $company_staff_num_rows = $get_company_staff->num_rows();
 		$user_row = $get_user->row();
     $company_staff_row = $get_company_staff->row();
     // Admin
 		if ($user_num_rows == 1 AND $company_staff_num_rows == 0 AND $user_row->LevelUser == 0) {
-
+ 			echo "admin";exit();
 			$this->session->set_userdata('admin_code',$user_row->Code);
-			$this->session->set_userdata('profil_image',$user_row->ProfilImage);
+			$this->session->set_userdata('profile_image',$user_row->ProfilImage);
 			// redirect('Supplier/dashboard_supplier_view');
 		}
-		elseif ($user_num_rows == 1 AND $company_staff_num_rows == 0 AND $user_row->LevelUser == 0) {
-		//	echo "buyer";exit();
-			$get_buyer = $this->M_member->get_member(0,0,$row->IdMember);
-	  $data['buyer'] = $get_buyer->result();
-			$this->session->set_userdata('id_buyer',$row->IdMember);
-			// $this->session->set_userdata('company_name',$row->CompanyName);
-			// $this->session->set_userdata('profil_image',$row->ProfilImage);
-			$this->session->set_userdata('first_name',$row->FirstName);
-			redirect('Home/index');
+		elseif ($user_num_rows == 1 AND $company_staff_num_rows == 0 AND $user_row->LevelUser == 1) {
+			//echo "company";exit();
+			$this->session->set_userdata('company_code',$user_row->Code);
+			$this->session->set_userdata('company_name',$user_row->CompanyName);
+			$this->session->set_userdata('profile_image',$user_row->ProfileImage);
+			redirect('User/company_dashboard_view');
 		}
-		elseif ($num_rows > 0 AND $row->IsUser == 1) {
-			$get_supplier = $this->M_member->get_member(1,0,$row->IdMember);
-	  	$data['supplier'] = $get_supplier->result();
-			//echo "admin";exit();
-			$this->session->set_userdata('id_admin',$row->IdMember);
-			$this->session->set_userdata('company_name',$row->CompanyName);
-			$this->session->set_userdata('profil_image',$row->ProfilImage);
-			$this->session->set_userdata('first_name',$row->FirstName);
-			redirect('Admin/admin_dashboard_view');
+		elseif ($user_num_rows == 0 AND $company_staff_num_rows == 1 ) {
+			//echo "staff";exit();
+			$this->session->set_userdata('company_staff_id',$company_staff_row->Id);
+			$this->session->set_userdata('first_name',$company_staff_row->FirstName);
+			$this->session->set_userdata('company_name',$company_staff_row->CompanyName);
+			$this->session->set_userdata('profile_image',$company_staff_row->ProfileImage);
+			redirect('Company_staff/company_staff_dashboard_view');
 		}
 		 else {
 			 echo "sinf ada";exit();
-			redirect('Home/index');
+			//redirect('Home/index');
 		}
-
-
 	}
 
+	function login_view(){
+		$this->load->view('frontend/login');
+	}
 	function logout(){
 		$this->session->sess_destroy();
 		redirect('Home/index');

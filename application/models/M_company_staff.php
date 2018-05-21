@@ -7,7 +7,11 @@ class M_company_staff extends CI_Model{
   function get_company_staff($filter_value="", $order_by=""){
     $staff_id = isset($filter_value['staff_id']) ? $filter_value['staff_id'] : "" ;
     $company_staff_code = isset($filter_value['company_staff_code']) ? $filter_value['company_staff_code'] : "" ;
+    $email = isset($filter_value['email']) ? $filter_value['email'] : "" ;
+    $password = isset($filter_value['password']) ? $filter_value['password'] : "" ;
     $filter_value = " 1=1 ";
+    $filter_value .= !empty($email) ? " AND tbcompanystaff.Email = '$email' " : "" ;
+    $filter_value .= !empty($password) ? " AND tbcompanystaff.Password = '$password' " : "" ;
     $filter_value .= !empty($staff_id) ? " AND tbcompanystaff.CompanyCode = $staff_id " : "" ;
     $filter_value .= !empty($company_staff_code) ? " AND tbcompanystaff.Id = '$company_staff_code' " : "" ;
     // $filter_value .= !empty($service) ? " AND tbmember.IdMember = $service " : "" ;
@@ -19,6 +23,7 @@ class M_company_staff extends CI_Model{
 
     $query = "SELECT tbcompanystaff.Id,
     tbcompanystaff.CompanyCode,
+    tbuser.CompanyName,
     tbcompanystaff.Email,
     tbcompanystaff.Password,
     tbcompanystaff.FirstName,

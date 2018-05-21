@@ -77,6 +77,7 @@ public function edit_company_profile(){
       $this->session->set_userdata('profile_image',$profile_image);
     }else{
       $profile_image = $profile_image_lama;
+      $this->session->set_userdata('profile_image',$profile_image_lama);
     }
     $data = array(
       'FirstName' => $this->input->post('first_name'),
@@ -88,7 +89,7 @@ public function edit_company_profile(){
       'ProfileImage' => $profile_image
     );
     // $this->session->set_userdata('first_name',$this->input->post('first_name'));
-    // $this->session->set_userdata('company_name',$this->input->post('company_name'));
+     $this->session->set_userdata('company_name',$this->input->post('company_name'));
     // print_r($data);exit();
     $this->M_user->edit_user($data,$company_code);
     redirect('User/edit_company_profile_view');
