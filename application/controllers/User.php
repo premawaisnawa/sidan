@@ -30,6 +30,7 @@ class User extends CI_Controller{
     $this->load->view('back_page/company_dashboard');
     $this->load->view('template/back_page/company/foot');
   }
+
   function edit_company_profile_view(){
   //$company_code = $this->session->userdata('company_code');
   // if (empty($company_code)) {
@@ -93,6 +94,71 @@ public function edit_company_profile(){
     $this->M_user->edit_user($data,$company_code);
     redirect('User/edit_company_profile_view');
   }
+
+  function admin_dashboard_view(){
+    // $id_admin = $this->session->userdata('id_admin');
+    // if (empty($id_admin)) {
+    //   redirect('Home/home_view');
+    // }
+    $this->load->view('template/back_page/admin/head');
+    $this->load->view('template/back_page/admin/navigation');
+    $this->load->view('template/back_page/admin/sidebar');
+    $this->load->view('back_page/admin_dashboard');
+    $this->load->view('template/back_page/admin/foot');
+  }
+
+  function company_list_view()
+  {
+    $head_data['page_title'] = "Sidan";
+    $this->load->view('template/back_page/admin/head',$head_data);
+    $this->load->view('template/back_page/admin/navigation');
+    $this->load->view('template/back_page/admin/sidebar');
+    $this->load->view('back_page/company/company_list');
+    $this->load->view('template/back_page/admin/foot');
+  }
+
+  function get_company_list_json()
+  {
+
+    $level_user = '1';  //$this->session->userdata('company_code');
+    $filter_value = array('level_user' => $level_user);
+    $get_user = $this->M_user->get_user($filter_value, 'Code ASC');
+    //print_r($get_support->row());exit();
+    $baris = $get_user->result();
+    $data = array();
+    foreach ($baris as $bar) {
+      // $is_active = ($bar->IsActive == 1) ? "Active" : "Not Active" ;
+      $row = array(
+      "Email" => $bar->Email,
+      "FirstName" => $bar->FirstName,
+      "LastName" => $bar->LastName,
+      "CompanyName" => $bar->CompanyName,
+      "ProfileImage" => $bar->ProfileImage,
+      "CompanyDescription" => $bar->CompanyDescription,
+      "PhoneNumber" => $bar->PhoneNumber,
+      "CompanyAddress" => $bar->CompanyAddress,
+      "MapCoordinates" => $bar->MapCoordinates,
+      "EditButton" => "<a class='btn btn-info' href=".base_url('index.php/user/user_edit_view/').$bar->Code.">Edit
+      <span class='fa fa-fw fa-eye' >
+      </span>
+      </a>"
+      );
+      $data[] = $row;
+    }
+    $output = array(
+      "draw" => 0,
+      "recordsTotal" => $get_user->num_rows(),
+      "recordsFiltered" => $get_user->num_rows(),
+      "data" => $data
+    );
+    echo json_encode($output);
+  }
+
+
+
+
+
+
 
 }
 

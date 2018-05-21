@@ -5,9 +5,9 @@
 class M_user extends CI_Model{
 
   function get_user($filter_value="", $order_by=""){
-    $user_code = isset($filter_value['user_code']) ? $filter_value['user_code'] : "" ;
+    $level_user = isset($filter_value['level_user']) ? $filter_value['level_user'] : "" ;
     $filter_value = " 1=1 ";
-    $filter_value .= !empty($user_code) ? " AND tbuser.Code = $user_code " : "" ;
+    $filter_value .= !empty($level_user) ? " AND tbuser.LevelUser = $level_user " : "" ;
     // $filter_value .= !empty($service) ? " AND tbmember.IdMember = $service " : "" ;
     // $filter_value .= is_numeric($is_closed) ? " AND tbsupport.IsClosed = $is_closed " : "" ;
     $order_by = !empty($order_by) ? "ORDER BY $order_by " : "";
