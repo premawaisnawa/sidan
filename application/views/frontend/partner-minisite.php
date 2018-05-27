@@ -1,7 +1,7 @@
 <section class="my-5 container">
     <div class="row">
         <div class="col-md-2 mx-auto">
-            <img class="img-fluid" src="<?php echo base_url() ?>public/images/telkomsel.png">
+            <img class="img-fluid" src="<?php echo base_url()?>public/images/telkomsel.png">
         </div>
     </div>
     <div class="row">
@@ -13,26 +13,15 @@
         </div>
     </div>
     <div class="wow fadeInUp">
-        <div class="d-flex justify-content-around align-items-center my-3">
-            <div class="w-25">
-                <h2 class="text-center">IndiHome</h2>
+        <div class="row my-3">
+            <div class="col-md-3 mx-auto rounded sidan-shadow p-4">
+                <img class="img-fluid w-100" src="<?php echo base_url()?>public/images/grapari.png">
             </div>
-            <div class="w-25">
-                <h2 class="text-center">Grapari</h2>
+            <div class="col-md-3 mx-auto rounded sidan-shadow p-4">
+                <img class="img-fluid w-100" src="<?php echo base_url()?>public/images/indihome.png">
             </div>
-            <div class="w-25">
-                <h2 class="text-center">Telkomsel</h2>
-            </div>
-        </div>
-        <div class="d-flex justify-content-around align-items-center my-3">
-            <div class="bg-primary text-white w-25 rounded sidan-shadow sidan-p-service">
-                <h2 class="text-center">A03</h2>
-            </div>
-            <div class="bg-success text-white w-25 rounded sidan-shadow sidan-p-service">
-                <h2 class="text-center">B01</h2>
-            </div>
-            <div class="bg-warning text-white w-25 rounded sidan-shadow sidan-p-service">
-                <h2 class="text-center">C02</h2>
+            <div class="col-md-3 mx-auto rounded sidan-shadow p-4">
+                <img class="img-fluid w-100" src="<?php echo base_url()?>public/images/telkomsel.png">
             </div>
         </div>
         <div class="d-flex justify-content-around align-items-center my-3">
@@ -54,3 +43,27 @@
         </div>
     </div>
 </section>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-4">
+                <h3 class="text-center"><span class="h3 mr-3"><i class="fa fa-info-circle"></i></span>Layanan IndiHome
+                </h3>
+                <p class="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam animi asperiores at
+                    consequatur culpa cumque dicta dignissimos dolores dolorum earum, enim explicabo magnam magni
+                    maiores minus nam non nostrum quae quam quas quasi quo similique suscipit tempora tempore
+                    voluptate?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
