@@ -30,10 +30,5 @@
         </div>
     </div>
 </footer>
-<script>
-    $(document).ready(function(){
-        new WOW().init();
-    });
-</script>
 </body>
 </html>

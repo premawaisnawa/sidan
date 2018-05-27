@@ -13,6 +13,11 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="<?php echo base_url() ?>/public/js/wow.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            new WOW().init();
+        });
+    </script>
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark mb-0" style="background-color: black">
@@ -28,7 +33,7 @@
                     <a class="nav-link text-white" href="partner.html">Partner</a>
                 </li>
             </ul>
-            <div class="w-100 mx-4">
+            <div class="w-100 mx-lg-4 order-3 order-lg-0">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Masukan kata kunci..">
                     <div class="input-group-append">
@@ -36,11 +41,11 @@
                     </div>
                 </div>
             </div>
-            <div class="my-2">
-                <button class="btn btn-primary text-white mx-2" href="#">Sign In</button>
+            <div class="my-2 order-0 order-lg-1">
+                <button class="btn btn-primary text-white my-1 my-lg-0 mx-0 mx-lg-2" href="#">Sign In</button>
             </div>
-            <div class="my-2">
-                <button class="btn btn-success text-white mx-2" href="#">Register</button>
+            <div class="my-2 order-1 order-lg-2">
+                <button class="btn btn-success text-white my-1 my-lg-0 mx-0 mx-lg-2" href="#">Register</button>
             </div>
         </div>
     </div>
