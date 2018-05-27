@@ -35,3 +35,10 @@
 .sidan-p-service {
     padding: 4rem;
 }
+
+
+@media (max-width: 576px) {
+    .sidan-shadow{
+        box-shadow: 0 .1rem .5rem rgba(0,0,0,.175)!important;
+    }
+}

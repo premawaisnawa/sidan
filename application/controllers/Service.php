@@ -20,9 +20,10 @@ class Service extends CI_Controller{
 		$get_user = $this->M_user->get_user($filter_value);
     $data['service_category'] = $get_service_category->result();
     $data['user'] = $get_user->result();
-    $this->load->view('frontend/partials/header');
+    //echo print_r($data['service_category']);exit();
+
     $this->load->view('frontend/partner-minisite-request',$data);
-    $this->load->view('frontend/partials/footer');
+
   }
 }
 
