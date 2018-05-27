@@ -1,7 +1,7 @@
 <section class="container my-5">
     <div class="row text-center my-5 wow fadeInUp">
         <div class="col-md-3 sidan-shadow">
-            <img src="<?php echo base_url()?>public/images/mcd.png" alt="" class="img-fluid sidan-img-size">
+            <a href="<?php echo site_url('User/company_mini_site_view'); ?>"><img src="<?php echo base_url()?>public/images/mcd.png" alt="" class="img-fluid sidan-img-size"></a> 
         </div>
         <div class="col-md-3 sidan-shadow">
             <img src="<?php echo base_url()?>public/images/samsung.jpg" alt="" class="img-fluid sidan-img-size">

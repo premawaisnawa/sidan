@@ -16,4 +16,4 @@ $config = array(
 );
 //smtp.live.com  'smtp_crypto' => 'ssl'
 //smtp-mail.outlook.com
-?>
+?>  

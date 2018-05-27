@@ -4,18 +4,18 @@
             <div class="card-header bg-success"></div>
             <div class="card-body text-dark">
                 <h5 class="card-title">Silahkan lengkapi form di bawah ini</h5>
-                <form>
-                    <div class="form-group">
-                        <label for="nama_perusahaan">Nama Perusahaan</label>
-                        <input type="email" class="form-control" id="nama_perusahaan" aria-describedby="emailHelp" placeholder="Masukan nama perusahaan">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Masukan email..">
-                        <small id="emailHelp" class="form-text text-muted">Pastikan email yang anda masukan sudah benar sebelum mendaftar</small>
-                    </div>
+                <form method="post" action="<?php echo base_url().'index.php/Registration/add_user'; ?>">
+                  <div class="form-group">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="phone_number" class="form-control" name="phone_number" id="phone_number" aria-describedby="emailHelp" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Masukan email..">
+                    <small id="emailHelp" class="form-text text-muted">Pastikan email yang anda masukan sudah benar sebelum mendaftar</small>
+                  </div>
                     <div class="text-center">
-                        <button class="btn btn-success">Daftar</button>
+                        <button class="btn btn-success">Submit</button>
                     </div>
                 </form>
             </div>

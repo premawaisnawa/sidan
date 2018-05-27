@@ -5,15 +5,15 @@
 class M_company_staff extends CI_Model{
 
   function get_company_staff($filter_value="", $order_by=""){
-    $staff_id = isset($filter_value['staff_id']) ? $filter_value['staff_id'] : "" ;
-    $company_staff_code = isset($filter_value['company_staff_code']) ? $filter_value['company_staff_code'] : "" ;
+    $company_staff_id = isset($filter_value['company_staff_id']) ? $filter_value['company_staff_id'] : "" ;
+    $company_code= isset($filter_value['company_code']) ? $filter_value['company_code'] : "" ;
     $email = isset($filter_value['email']) ? $filter_value['email'] : "" ;
     $password = isset($filter_value['password']) ? $filter_value['password'] : "" ;
     $filter_value = " 1=1 ";
+    $filter_value .= !empty($company_code) ? " AND tbuser.Code = '$company_code' " : "" ;
     $filter_value .= !empty($email) ? " AND tbcompanystaff.Email = '$email' " : "" ;
     $filter_value .= !empty($password) ? " AND tbcompanystaff.Password = '$password' " : "" ;
-    $filter_value .= !empty($staff_id) ? " AND tbcompanystaff.CompanyCode = $staff_id " : "" ;
-    $filter_value .= !empty($company_staff_code) ? " AND tbcompanystaff.Id = '$company_staff_code' " : "" ;
+    $filter_value .= !empty($company_staff_id) ? " AND tbcompanystaff.Id = '$company_staff_id' " : "" ;
     // $filter_value .= !empty($service) ? " AND tbmember.IdMember = $service " : "" ;
     // $filter_value .= is_numeric($is_closed) ? " AND tbsupport.IsClosed = $is_closed " : "" ;
     $order_by = !empty($order_by) ? "ORDER BY $order_by " : "";
@@ -33,7 +33,7 @@ class M_company_staff extends CI_Model{
     FROM tbcompanystaff
     INNER JOIN tbuser ON tbuser.Code = tbcompanystaff.CompanyCode
     WHERE".$filter_value.$order_by;
-     //echo $query;exit();
+    //echo $query;exit();
     $query = $this->db->query($query);
     return $query;
   }
@@ -44,8 +44,8 @@ class M_company_staff extends CI_Model{
     return $staff_id;
   }
 
-  function edit_company_staff($data,$code) {
-             $this->db->where('Id',$code );
+  function edit_company_staff($data,$id) {
+             $this->db->where('Id',$id );
              $this->db->update("tbcompanystaff",$data);
   }
 

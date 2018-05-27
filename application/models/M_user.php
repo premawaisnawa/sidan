@@ -21,15 +21,13 @@ class M_user extends CI_Model{
 
     $query = "SELECT * FROM tbuser
     WHERE".$filter_value.$order_by;
-     //echo $query;exit();
+    // echo $query;exit();
     $query = $this->db->query($query);
     return $query;
   }
 
   function add_user($data) {
     $this->db->insert('tbuser',$data);
-    $staff_id = $this->db->insert_id();
-    return $staff_id;
   }
 
   function edit_user($data,$code) {

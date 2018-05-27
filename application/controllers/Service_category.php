@@ -45,13 +45,8 @@ class Service_category extends CI_Controller{
 
   function service_category_edit_view($code)
   {
-     // $id_admin = $this->session->userdata('id_admin');
-      // if (empty($id_admin)) {
-      //   redirect('Home/home_view');
-      // }
-
-
-    $filter_value = array('user_code' => '001', 'service_category_code' => $code);
+    $company_code = $this->session->userdata('company_code');
+    $filter_value = array('service_category_code' => $code);
     $get_service_category = $this->M_service_category->get_service_category($filter_value);
     $data['data'] = $get_service_category->result();
 
@@ -64,11 +59,10 @@ class Service_category extends CI_Controller{
   }
 
 
-  function get_service_catgeory_json()
-  {
+  function get_service_category_json() {
 
-    $company_code = '001';  //$this->session->userdata('company_code');
-    $filter_value = array('user_code' => $company_code);
+    $company_code = $this->session->userdata('company_code');
+    $filter_value = array('company_code' => $company_code);
     $get_service_category = $this->M_service_category->get_service_category($filter_value, 'ServiceCategoryName DESC');
     //print_r($get_support->row());exit();
     $baris = $get_service_category->result();
@@ -104,7 +98,7 @@ class Service_category extends CI_Controller{
     if ($code_oto < 10) {
       $code_oto = "0".$code_oto;
     }
-    $company_code = '001';
+    $company_code = $this->session->userdata('company_code');
     $data = array(
       'Code' => $code_oto,
       'CompanyCode' => $company_code,

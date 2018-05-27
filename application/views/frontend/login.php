@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <form class="" action="<?php echo base_url().'index.php/Login/login'; ?>" method="post">
-      <input type="text" name="email" value="">
-      <input type="password" name="password" value="">
-      <input type="submit" name="" value="">
-    </form>
-  </body>
-</html>
-=======
 <section class="container my-5">
     <div class="row">
         <div class="col-md-5 mx-auto">
@@ -23,15 +7,15 @@
                     <p class="text-center"><span class="display-3"><i class="fa fa-user-circle-o"></i></span></p>
                     <h4 class="text-center">SIDAN</h4>
                     <h5 class="card-title text-center">Selamat datang, silahkan Login</h5>
-                    <form class="mt-4">
+                    <form class="mt-4" method="post" action="<?php echo base_url().'index.php/Login/login'; ?>">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
                                    placeholder="Masukan email..">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password">
+                            <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <div class="text-center">
                             <button class="btn btn-primary">Login</button>
@@ -42,4 +26,3 @@
         </div>
     </div>
 </section>
->>>>>>> origin/login

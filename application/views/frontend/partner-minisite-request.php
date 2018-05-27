@@ -14,32 +14,13 @@
     </div>
     <div class="wow fadeInUp">
         <div class="row my-3">
+          <?php $i = 1; foreach($service_category as $sc){ ?>
             <div class="col-md-3 mx-auto rounded sidan-shadow p-4">
-                <img class="img-fluid w-100" src="<?php echo base_url()?>public/images/grapari.png">
+              
+                <img class="img-fluid w-100" src="<?php echo base_url().'assets/pic_file/'.$sc->ServiceCategoryImage?>">
             </div>
-            <div class="col-md-3 mx-auto rounded sidan-shadow p-4">
-                <img class="img-fluid w-100" src="<?php echo base_url()?>public/images/indihome.png">
-            </div>
-            <div class="col-md-3 mx-auto rounded sidan-shadow p-4">
-                <img class="img-fluid w-100" src="<?php echo base_url()?>public/images/telkomsel.png">
-            </div>
+          <?php } ?>
         </div>
-        <div class="d-flex justify-content-around align-items-center my-3">
-            <div class="w-25 text-center">
-                <button class="btn btn-dark text-white"><i
-                        class="fa fa-send mr-2"></i>Ambil
-                </button>
-            </div>
-            <div class="w-25 text-center">
-                <button class="btn btn-dark text-white"><i
-                        class="fa fa-send mr-2"></i>Ambil
-                </button>
-            </div>
-            <div class="w-25 text-center">
-                <button class="btn btn-dark text-white"><i
-                        class="fa fa-send mr-2"></i>Ambil
-                </button>
-            </div>
-        </div>
+
     </div>
 </section>

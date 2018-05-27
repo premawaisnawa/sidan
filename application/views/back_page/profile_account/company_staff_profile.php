@@ -1,10 +1,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
 <section class="content">
-  <div class="text-center">
-    <?php $company_code = $this->session->userdata('company_code'); ?>
-    <a href="<?php echo site_url('User/company_mini_site_view?company_code=').$company_code ?>" class="text-center btn btn-info"><span class="glyphicon glyphicon-eye-open"></span> Preview Mini Site</a>
-  </div>
   <br>
   <div class="row">
     <div class="col-md-12">
@@ -15,7 +11,7 @@
         <?php //echo $error;?>
         <div class="box-body">
 
-          <form method="post" id="Simpan"  action="<?php echo base_url().'index.php/User/edit_company_profile'; ?>" enctype="multipart/form-data"  onfocusout="edit(event)">
+          <form method="post" id="Simpan"  action="<?php echo base_url().'index.php/User/edit_company_staff_profile'; ?>" enctype="multipart/form-data"  onfocusout="edit(event)">
             <!-- <div class="form-group text-center">
             <label  for="profile_image">Profil Image</label> <br>
             <img src="<?php //echo base_url().'assets/suplier_upload/'.$staff[0]->Gambar; ?>" id = "fotoview" alt="" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"><br>
@@ -67,12 +63,12 @@
               <label class="control-label">Email</label>
               <input type="text" name="email" id="email" value="<?php echo $staff[0]->Email; ?>" data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category description..."  class="form-control"  placeholder="">
             </div>
-          
+
             <div class="form-group col-lg-12">
               <label class="control-label">Phone Number</label>
               <input type="text" name="phone_number" id="phone_number" value="<?php echo $staff[0]->PhoneNumber; ?>" data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category description..."  class="form-control"  placeholder="">
             </div>
-        
+
               <button type="submit" class="btn btn-primary col-md-12" name="button">Save</button>
             </form>
           </div>

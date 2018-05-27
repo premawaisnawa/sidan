@@ -17,7 +17,7 @@
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark mb-0" style="background-color: black">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<?php echo site_url('Home'); ?>">
             SIDAN
         </a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span
@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-white" href="partner.html">Partner</a>
+                    <a class="nav-link text-white" href="<?php echo site_url('User/public_company_list_view'); ?>">Partner</a>
                 </li>
             </ul>
             <div class="w-100 mx-4">
@@ -37,10 +37,10 @@
                 </div>
             </div>
             <div class="my-2">
-                <button class="btn btn-primary text-white mx-2" href="#">Sign In</button>
+                <a href="<?php echo site_url('Login/login_view'); ?>"><button class="btn btn-primary text-white mx-2" href="#">Sign In</button></a>
             </div>
             <div class="my-2">
-                <button class="btn btn-success text-white mx-2" href="#">Register</button>
+                <a href="<?php echo site_url('Registration/registration_view'); ?>"><button class="btn btn-success text-white mx-2" >Register</button></a>
             </div>
         </div>
     </div>

@@ -42,9 +42,6 @@
         </li> -->
         <li><a href="<?php echo base_url().'index.php/user/admin_dashboard_view' ?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
         <li><a href="<?php echo base_url().'index.php/user/company_list_view' ?>"><i class="glyphicon glyphicon-th-list"></i><span>Company List</span></a></li>
-        <li><a href="<?php //echo base_url().'index.php/company_staff/company_staff_list_view' ?>"><i class="glyphicon glyphicon-th-list"></i><span >Company Staff</span></a></li>
-        <li><a href="<?php //echo base_url().'index.php/User/edit_company_profile_view' ?>"><i class="glyphicon glyphicon-th-list"></i> <span>Profile</span></a></li>
-
         <!-- <li><a href="<?php //echo base_url().'index.php/Support/member_support_list_view' ?>"><i class="glyphicon glyphicon-phone-alt"></i> <span>Support List</span></a></li> -->
       </ul>
     </section>

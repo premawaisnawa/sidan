@@ -76,7 +76,7 @@
             </div>
             <div class="form-group col-lg-12">
               <label class="control-label">Map Embed</label>
-              <input type="text" name="city" id="description" value="<?php echo $user[0]->MapCoordinates; ?>" data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category description..."  class="form-control"  placeholder="">
+              <input type="text" name="map_coordinates" id="description" value="<?php echo $user[0]->MapCoordinates; ?>" data-validation="length" data-validation-length="min4" data-validation-error-msg="Please fill out category description..."  class="form-control"  placeholder="">
             </div>
             <div class="form-group col-lg-12">
               <label class="control-label">Company Description</label>

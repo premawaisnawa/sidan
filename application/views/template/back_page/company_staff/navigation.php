@@ -50,7 +50,7 @@
                       <a href="<?php //echo site_url('Home/home_view/') ;?>" class="btn btn-default btn-flat">Visite Site</a>
                     </div>
                     <div class="pull-right">
-                      <a href="<?php //echo base_url().'index.php/Login/logout';?>" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="<?php echo base_url().'index.php/Login/logout';?>" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>

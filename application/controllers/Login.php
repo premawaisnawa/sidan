@@ -10,7 +10,6 @@ class Login extends CI_Controller {
 		$this->load->model(array('M_user','M_company_staff'));
 	}
 
-
 	function login(){
 		$email = $this->input->post('email');
 		$password = sha1($this->input->post('password'));
@@ -44,17 +43,14 @@ class Login extends CI_Controller {
 			redirect('Company_staff/company_staff_dashboard_view');
 		}
 		 else {
-			 echo "sinf ada";exit();
+			 echo "sing ada";exit();
 			//redirect('Home/index');
 		}
 	}
 
 	function login_view(){
-
         $this->load->view('frontend/partials/header');
-
         $this->load->view('frontend/login');
-
         $this->load->view('frontend/partials/footer');
 		//$this->load->view('frontend/login');
 	}

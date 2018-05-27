@@ -58,7 +58,7 @@ $(document).ready(function() {
     "order": [], //Initial no order.
     // Load data for the table's content from an Ajax source
     "ajax": {
-      "url": '<?php echo site_url('Service_category/get_service_catgeory_json'); ?>',
+      "url": '<?php echo site_url('Service_category/get_service_category_json'); ?>',
       "type": "POST"
     },
     //Set column definition initialisation properties.

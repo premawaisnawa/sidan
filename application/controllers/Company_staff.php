@@ -43,18 +43,11 @@ class Company_staff extends CI_Controller{
     $this->load->view('template/back_page/company/foot');
   }
 
-  function company_staff_edit_view($code)
-  {
-     // $id_admin = $this->session->userdata('id_admin');
-      // if (empty($id_admin)) {
-      //   redirect('Home/home_view');
-      // }
-
-
-    $filter_value = array('user_code' => '001', 'company_staff_code' => $code);
+  function company_staff_edit_view($id){
+    $company_code = $this->session->userdata('company_code');
+    $filter_value = array('company_staff_id' => $id);
     $get_company_staff = $this->M_company_staff->get_company_staff($filter_value);
     $data['data'] = $get_company_staff->result();
-
     $head_data['page_title'] = "Sidan";
     $this->load->view('template/back_page/company/head',$head_data);
     $this->load->view('template/back_page/company/navigation');
@@ -67,8 +60,8 @@ class Company_staff extends CI_Controller{
   function get_company_staff_json()
   {
 
-    $company_code = '001';  //$this->session->userdata('company_code');
-    $filter_value = array('user_code' => $company_code);
+    $company_code = $this->session->userdata('company_code');
+    $filter_value = array('company_code' => $company_code);
     $get_company_staff = $this->M_company_staff->get_company_staff($filter_value, 'Id ASC');
     //print_r($get_support->row());exit();
     $baris = $get_company_staff->result();
@@ -102,7 +95,7 @@ class Company_staff extends CI_Controller{
     // $row = $get_company_staff->row();
     // $pwd = $row->Id+1;
     // $pwd = "pwd|".$pwd."|".time();
-    $company_code = '001';
+    $company_code = $this->session->userdata('company_code');
     $data = array(
       'CompanyCode' => $company_code,
       'Email' => $this->input->post('company_staff_email'),
@@ -118,6 +111,9 @@ class Company_staff extends CI_Controller{
       $this->email->message("<a href='".base_url().
       "index.php/Company_staff/new_staff_update_password/".$staff_id.
       "'>Confirm Your Account</a>");
+      $this->email->set_newline("\r\n");
+    $this->email->send();
+    
     // $this->session->set_flashdata('msg', 'Add Service Category successfully ...');
     redirect('company_staff/company_staff_list_view');
   }
