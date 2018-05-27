@@ -17,13 +17,18 @@
         $(document).ready(function(){
             new WOW().init();
         });
+        function setHiddenValue(code) {
+            var hidden = document.getElementById('serviceCode');
+            hidden.value = code;
+            console.log(hidden.value);
+        }
     </script>
 </head>
 <body class="bg-light">
 <section class="my-5 container">
     <div class="row">
         <div class="col-md-2 mx-auto text-center">
-            <img class="img-fluid" src="<?php echo base_url()?>/public/images/telkomsel.png">
+            <img class="img-fluid" src="public/images/telkomsel.png">
         </div>
     </div>
     <div class="row">
@@ -37,37 +42,37 @@
     <div class="wow fadeInUp">
         <div class="row my-3 mx-4 mx-lg-0">
             <div class="col-md-3 mx-auto rounded sidan-shadow px-5 py-3">
-                <img class="img-fluid w-100" src="<?php echo base_url()?>/public/images/grapari.png">
+                <img class="img-fluid w-100" src="public/images/grapari.png">
             </div>
-            <button class="btn btn-dark text-white d-lg-none d-inline mx-auto" data-toggle="modal" data-target="#exampleModalCenter"><i
+            <button class="btn btn-dark text-white d-lg-none d-inline mx-auto" data-toggle="modal" data-target="#exampleModalCenter" onclick="setHiddenValue('grapari')"><i
                         class="fa fa-send mr-2"></i>Ambil
             </button>
             <div class="col-md-3 mx-auto rounded sidan-shadow px-5 py-3">
-                <img class="img-fluid w-100" src="<?php echo base_url()?>/public/images/indihome.png">
+                <img class="img-fluid w-100" src="public/images/indihome.png">
             </div>
-            <button class="btn btn-dark text-white d-lg-none d-inline mx-auto" data-toggle="modal" data-target="#exampleModalCenter"><i
+            <button class="btn btn-dark text-white d-lg-none d-inline mx-auto" data-toggle="modal" data-target="#exampleModalCenter" onclick="setHiddenValue('telkomsel')"><i
                         class="fa fa-send mr-2"></i>Ambil
             </button>
             <div class="col-md-3 mx-auto rounded sidan-shadow px-5 py-3">
-                <img class="img-fluid w-100" src="<?php echo base_url()?>/public/images/telkomsel.png">
+                <img class="img-fluid w-100" src="public/images/telkomsel.png">
             </div>
-            <button class="btn btn-dark text-white d-lg-none d-inline mx-auto" data-toggle="modal" data-target="#exampleModalCenter"><i
+            <button class="btn btn-dark text-white d-lg-none d-inline mx-auto" data-toggle="modal" data-target="#exampleModalCenter" onclick="setHiddenValue('indihome')"><i
                         class="fa fa-send mr-2"></i>Ambil
             </button>
         </div>
         <div class="d-flex justify-content-around align-items-center my-3">
             <div class="w-25 text-center d-none d-lg-block">
-                <button class="btn btn-dark text-white" data-toggle="modal" data-target="#exampleModalCenter"><i
+                <button class="btn btn-dark text-white" data-toggle="modal" data-target="#exampleModalCenter" onclick="setHiddenValue('grapari')"><i
                             class="fa fa-send mr-2"></i>Ambil
                 </button>
             </div>
             <div class="w-25 text-center d-none d-lg-block">
-                <button class="btn btn-dark text-white" data-toggle="modal" data-target="#exampleModalCenter"><i
+                <button class="btn btn-dark text-white" data-toggle="modal" data-target="#exampleModalCenter" onclick="setHiddenValue('telkomsel')"><i
                             class="fa fa-send mr-2"></i>Ambil
                 </button>
             </div>
             <div class="w-25 text-center d-none d-lg-block">
-                <button class="btn btn-dark text-white" data-toggle="modal" data-target="#exampleModalCenter"><i
+                <button class="btn btn-dark text-white" data-toggle="modal" data-target="#exampleModalCenter" onclick="setHiddenValue('indihome')"><i
                             class="fa fa-send mr-2"></i>Ambil
                 </button>
             </div>
@@ -89,6 +94,7 @@
             <div class="modal-body p-4">
                 <h3 class="text-center"> Code Ticket A03</h3>
                 <form>
+                    <input type="hidden" id="serviceCode" value="" name="service_category_code" />
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
