@@ -113,13 +113,13 @@ class Company_staff extends CI_Controller{
       "'>Confirm Your Account</a>");
       $this->email->set_newline("\r\n");
     $this->email->send();
-    
+
     // $this->session->set_flashdata('msg', 'Add Service Category successfully ...');
     redirect('company_staff/company_staff_list_view');
   }
 
    function edit_company_staff(){
-      $company_staff_code = $this->input->post('company_staff_code');
+      $company_staff_id = $this->input->post('company_staff_code');
       $data = array(
         'Email' => $this->input->post('company_staff_email'),
       'Password' => $this->input->post('company_staff_password'),
@@ -128,7 +128,7 @@ class Company_staff extends CI_Controller{
       'PhoneNumber' => $this->input->post('company_staff_phonenumber'),
       'ProfileImage' => $this->input->post('company_staff_profileimage')
     );
-      $this->M_company_staff->edit_company_staff($data,$company_staff_code) ;
+      $this->M_company_staff->edit_company_staff($data,$company_staff_id) ;
       // $this->session->set_flashdata('msg', 'Edit Product Category successfully...');
     redirect('company_staff/company_staff_list_view');
     }

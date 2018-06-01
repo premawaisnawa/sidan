@@ -42,10 +42,10 @@
                 </div>
             </div>
             <div class="my-2 order-0 order-lg-1">
-                <button class="btn btn-primary text-white my-1 my-lg-0 mx-0 mx-lg-2" href="#">Sign In</button>
+                <a href="<?php echo site_url('Login/login_view'); ?>"><button class="btn btn-primary text-white my-1 my-lg-0 mx-0 mx-lg-2" >Sign In</button></a>
             </div>
             <div class="my-2 order-1 order-lg-2">
-                <button class="btn btn-success text-white my-1 my-lg-0 mx-0 mx-lg-2" href="#">Register</button>
+                <a href="<?php echo site_url('Login/login_view'); ?>"><button class="btn btn-success text-white my-1 my-lg-0 mx-0 mx-lg-2" href="#">Register</button></a>
             </div>
         </div>
     </div>

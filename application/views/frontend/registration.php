@@ -15,7 +15,7 @@
                     <small id="emailHelp" class="form-text text-muted">Pastikan email yang anda masukan sudah benar sebelum mendaftar</small>
                   </div>
                     <div class="text-center">
-                        <button class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </form>
             </div>

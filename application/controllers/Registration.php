@@ -34,63 +34,43 @@ class Registration extends CI_Controller{
   $this->M_user->add_user($data);
    $this->email->from('marketplacesilver@gmail.com', 'marketplacesilver');
      $this->email->to($this->input->post('email'));
-     $this->email->subject('SIDAN Account Verfication');
+     $this->email->subject('SIDAN Company Account Verification');
      $this->email->message("<a href='".base_url().
-     "index.php/Company_staff/new_staff_update_password/".$user_code.
-     "'>Confirm Your Account</a>");
+     "index.php/Registration/new_company_verification/".$user_code.
+     "'>Verify Your Account</a>");
+     $this->email->set_newline("\r\n");
+   $this->email->send();
   }
-// public function new_member_edit_profile_view($id_member){
-//   $get_member = $this->M_member->get_member(0,"",$id_member);
-//   $data['user'] = $get_member->result();
-//   $get_product_category = $this->M_product_category->get_product_category();
-//   $get_product_sub_category = $this->M_product_sub_category->get_product_sub_category_all();
-//   $data_nav['product_category'] = $get_product_category->result();
-//   $data_nav['product_sub_category'] = $get_product_sub_category->result();
-//   $head_data['page_title'] = "Quotation Detail";
-//   $this->load->view('template/front/head_front',$head_data);
-//   $this->load->view('template/front/navigation',$data_nav);
-//   $this->load->view('public/register/new_member_edit_profile',$data);
-//   $this->load->view('template/front/foot_front');
-// }
-//
-// public function edit_new_member_profile(){
-//   if ($this->input->post('password')===$this->input->post('c_password')) {
-//     $data = array('Pwd' => sha1($this->input->post('password')),
-//     'IsSupplier' => $this->input->post('is_supplier'),
-//     'FirstName' => $this->input->post('first_name'),
-//     'LastName' => $this->input->post('last_name'),
-//     'CompanyName' => $this->input->post('company_name'),
-//     'Phone' => $this->input->post('phone')
-//   );
-//   $id_member = $this->input->post('id_member');
-//   $this->M_member->edit_member($data,$id_member);
-//     if ($this->input->post('is_supplier')==1) {
-//       $this->session->set_userdata('id_supplier',$id_member);
-//       $this->session->set_userdata('company_name',$row->CompanyName);
-//       $this->session->set_userdata('profil_image',$row->ProfilImage);
-//       $this->session->set_userdata('first_name',$row->FirstName);
-//       redirect('Supplier/dashboard_supplier_view');
-//     } else {
-//       $this->session->set_userdata('id_buyer',$id_member);
-//       $this->session->set_userdata('company_name',$row->CompanyName);
-//       $this->session->set_userdata('profil_image',$row->ProfilImage);
-//       $this->session->set_userdata('first_name',$row->FirstName);
-//       redirect('Home/home_view');
-//     }
-//
-//   } else {
-//     redirect('Home/home_view');
-//   }
-// }
-//
-// public function check_email($str){
-//   $query = $this->db->get_where("tbmember",array("Email"=>$str));
-//   if ($query->num_rows() >= 1) {
-//     $this->form_validation->set_message('check_email', 'Email yang anda masukan sudah terdaftar');
-//     return FALSE;
-//   } else {
-//     return TRUE;
-//   }
+
+  function new_company_verification_view($user_code){
+    $filter_value = array('user_code' => $user_code);
+    $get_user = $this->M_user->get_user($filter_value);
+    $data['user'] = $get_user->result();
+    $this->load->view('frontend/new_company_verification',$data);
+  }
+  function verify_company_account(){
+    $code = $this->input->post('company_code');
+    if ($this->input->post('password') == $this->input->post('c_password')) {
+      $password = $this->input->post('password');
+      $data = array(
+        'PhoneNumber' => $this->input->post('phone_number'),
+        'CompanyName' => $this->input->post('company_name'),
+        'FirstName' => $this->input->post('first_name'),
+        'LastName' => $this->input->post('last_name'),
+        'Password' => sha1($password),
+        'IsVerified' => 1
+      );
+      $this->M_user->edit_user($data,$code);
+      $this->session->set_userdata('company_code',$code);
+			$this->session->set_userdata('company_name',$this->input->post('company_name'));
+			//$this->session->set_userdata('profile_image',$user_row->ProfileImage);
+			redirect('User/company_dashboard_view');
+    }
+
+
+
+
+  }
 
 }
 

@@ -12,9 +12,7 @@
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">Service Category List</h3>
-          <a style="float:right"  href="<?php echo base_url("index.php/service_category/service_category_add_view");?>" class="btn btn-primary">
-            <i class="glyphicon glyphicon-send"> </i> Add Service Category
-          </a>
+
         </div>
     <!-- /.box-header -->
         <div class="box-body">
@@ -22,7 +20,7 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead class="text-center">
                   <tr>
-                    <th class="text-center">Service Category Code</th>
+
                     <th class="text-center">Service Category Name</th>
                     <th class="text-center">Max Waiting Time</th>
                     <th class="text-center">Is Active</th>
@@ -58,16 +56,16 @@ $(document).ready(function() {
     "order": [], //Initial no order.
     // Load data for the table's content from an Ajax source
     "ajax": {
-      "url": '<?php echo site_url('Service_category/get_service_category_json'); ?>',
+      "url": '<?php echo site_url('Service_category/get_staff_service_category_json'); ?>',
       "type": "POST"
     },
     //Set column definition initialisation properties.
     "columns": [
-      {"data": "ServiceCategoryCode"},
+
       {"data": "ServiceCategoryName"},
       {"data": "MaxWaitingTime"},
       {"data": "IsActive"},
-      {"data": "EditButton"}
+      {"data": "ServeService"}
     ],
 
   });
