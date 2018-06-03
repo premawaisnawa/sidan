@@ -6,7 +6,7 @@ class Service extends CI_Controller{
 
   function __construct(){
 		parent::__construct();
-		$this->load->library(array('form_validation','pagination'));
+		$this->load->library(array('form_validation','pagination','email'));
 		$this->load->helper(array('form', 'url'));
     $this->load->model(array('M_service_category','M_user','M_date','M_service'));
 		// $this->load->model(array('M_product','M_product_category','M_product_sub_category','M_pagination','M_quotation','M_quotation_detail','M_support','M_support_detail','M_date'));
@@ -30,6 +30,53 @@ class Service extends CI_Controller{
     $data['company'] = $get_user->result();
     //echo print_r($data['service_category']);exit();
     $this->load->view('frontend/partner-minisite-request',$data);
+  }
+
+function get_unserved_service($theCode){
+  $service_category_code = $theCode;
+  $date = $this->M_date->get_date_sql_format();
+  $filter_value = array("start_time" => $date, "service_category_code" => $service_category_code, "is_served" => 0);
+  $get_service = $this->M_service->get_service($filter_value,"tbservice.StartTime ASC",1);
+  $bar = $get_service->row();
+  // __________disini code update serviceCode
+  $data = array('IsServed' => 1 , 'EndTime' =>$this->M_date->get_datetime_sql_format());
+  $this->M_service->edit_service($data,$bar->Code);
+  //_____________________________
+  //foreach ($baris as $bar) {
+    $row = array(
+    "ServiceCode" => $bar->Code,
+    "TicketCode" => $bar->TicketCode,
+    "ServiceCategoryName" => $bar->ServiceCategoryName,
+    "CustomerEmail" => $bar->CustomerEmail,
+    "PhoneNumber" => $bar->PhoneNumber
+    );
+    // $data[] = $bar;
+  //}
+  echo json_encode($row);
+}
+
+  function add_service()
+  {
+    $service_code = $this->input->post('service_code');
+    $service_category_code = $this->input->post('service_category_code');
+    $data = array(
+      'CustomerEmail' => $this->input->post('customer_email'),
+      'StaffId' => $this->session->userdata('company_staff_id'),
+      'PhoneNumber' => $this->input->post('phone_number'),
+      'CustomerName' => $this->input->post('customer_name'),
+      'ServiceDescription' => $this->input->post('service_description'),
+      'IsPresent' => $this->input->post('is_present')
+    );
+    $this->M_service->edit_service($data,$service_code);
+    $this->email->from('marketplacesilver@gmail.com', 'marketplacesilver');
+      $this->email->to($this->input->post('email'));
+      $this->email->subject('SIDAN Service Review');
+      $this->email->message("<a href='".base_url().
+      "index.php/Registration/new_company_verification_view/".$user_code.
+      "'>Verify Your Account</a>");
+      $this->email->set_newline("\r\n");
+    $this->email->send();
+    redirect('Service/add_service_view/'.$service_category_code);
   }
   function add_request_ticket(){
     $company_code = $this->session->userdata('company_code');
@@ -60,8 +107,19 @@ class Service extends CI_Controller{
     $filter_value = array("service_code" => $service_code);
     $get_service = $this->M_service->get_service($filter_value);
     $data['service'] = $get_service->result();
+    // ________email
+    $this->email->from('marketplacesilver@gmail.com', 'marketplacesilver');
+      $this->email->to($this->input->post('email'));
+      $this->email->subject('SIDAN Reques Ticket');
+      $this->email->message($ticket_code.'<br>'."<a href='".base_url().
+      "_".
+      "'>Check Your Queue</a>");
+      $this->email->set_newline("\r\n");
+    $this->email->send();
+    //email
     $this->load->view('frontend/request_ticket_success',$data);
     // tidak boleh reload
+    //redesign
   }
 }
 

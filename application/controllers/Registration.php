@@ -36,7 +36,7 @@ class Registration extends CI_Controller{
      $this->email->to($this->input->post('email'));
      $this->email->subject('SIDAN Company Account Verification');
      $this->email->message("<a href='".base_url().
-     "index.php/Registration/new_company_verification/".$user_code.
+     "index.php/Registration/new_company_verification_view/".$user_code.
      "'>Verify Your Account</a>");
      $this->email->set_newline("\r\n");
    $this->email->send();
