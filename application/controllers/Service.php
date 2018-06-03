@@ -69,14 +69,17 @@ function get_unserved_service($theCode){
     );
     $this->M_service->edit_service($data,$service_code);
     $this->email->from('marketplacesilver@gmail.com', 'marketplacesilver');
-      $this->email->to($this->input->post('email'));
+      $this->email->to($this->input->post('customer_email'));
       $this->email->subject('SIDAN Service Review');
       $this->email->message("<a href='".base_url().
-      "index.php/Registration/new_company_verification_view/".$user_code.
-      "'>Verify Your Account</a>");
+      "index.php/Service/add_service_review_view/".$service_code.
+      "'>RaTE Use</a>");
       $this->email->set_newline("\r\n");
     $this->email->send();
     redirect('Service/add_service_view/'.$service_category_code);
+  }
+  function add_service_review_view(){
+    $this->load->view('frontend/service_review');
   }
   function add_request_ticket(){
     $company_code = $this->session->userdata('company_code');
