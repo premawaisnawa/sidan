@@ -14,15 +14,32 @@
   </section>
   <section class="content">
   <div class="row">
+
     <?php $i = 1; foreach($service_category as $sc){ ?>
 
     <div class="col-lg-3 col-xs-6">
       <!-- small box -->
       <div class="small-box bg-aqua">
         <div class="inner">
-          <h3>150</h3>
+
+          <h3>
+            <?php
+            $jumlah_antrian = "";
+            $i = 1; foreach($service as $s){
+
+              if ($s->ServiceCategoryCode == $sc->Code) {
+              $jumlah_antrian = $s->JumlahAntrian;
+            }
+            }
+            if (!empty($jumlah_antrian)) {
+             echo $jumlah_antrian;
+            } else {
+             echo 0;
+            }?>
+         </h3>
 
           <p><?php echo $sc->ServiceCategoryName; ?></p>
+
         </div>
         <div class="icon">
           <img src="<?php if (empty($this->session->userdata('profile_image')) OR $this->session->userdata('profile_image') == "") {
