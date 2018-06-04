@@ -78,8 +78,17 @@ function get_unserved_service($theCode){
     $this->email->send();
     redirect('Service/add_service_view/'.$service_category_code);
   }
-  function add_service_review_view(){
-    $this->load->view('frontend/service_review');
+  function add_service_review_view($service_code){
+    $data['service_code'] = $service_code;
+    $this->load->view('frontend/service_review',$data);
+  }
+  function add_service_review()  {
+    $service_code =$this->input->post('service_code');
+    $data = array(
+      'ServiceRating' => $this->input->post('rating')
+    );
+    $this->M_service->edit_service($data,$service_code);//echo $service_code;exit();
+    $this->load->view('frontend/service_review_success');
   }
   function add_request_ticket(){
     $company_code = $this->session->userdata('company_code');

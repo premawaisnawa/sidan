@@ -61,9 +61,11 @@ function edit_company_staff_profile_view(){
   // if (empty($company_code)) {
   //   redirect('Home/home_view');
   // }
-  $filter_value = $this->session->userdata('company_staff_id');
+  $filter_value = array('company_staff_id' => $this->session->userdata('company_staff_id'));
+  //$filter_value = $this->session->userdata('company_staff_id');
   $get_company_staff = $this->M_company_staff->get_company_staff($filter_value);
   $data['staff'] = $get_company_staff->result();
+  //print_r($data);exit();
   $this->load->view('template/back_page/company_staff/head');
   $this->load->view('template/back_page/company_staff/navigation');
   $this->load->view('template/back_page/company_staff/sidebar');

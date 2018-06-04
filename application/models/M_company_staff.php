@@ -13,7 +13,7 @@ class M_company_staff extends CI_Model{
     $filter_value .= !empty($company_code) ? " AND tbuser.Code = '$company_code' " : "" ;
     $filter_value .= !empty($email) ? " AND tbcompanystaff.Email = '$email' " : "" ;
     $filter_value .= !empty($password) ? " AND tbcompanystaff.Password = '$password' " : "" ;
-    $filter_value .= !empty($company_staff_id) ? " AND tbcompanystaff.Id = '$company_staff_id' " : "" ;
+    $filter_value .= !empty($company_staff_id) ? " AND tbcompanystaff.Id = $company_staff_id " : "" ;
     // $filter_value .= !empty($service) ? " AND tbmember.IdMember = $service " : "" ;
     // $filter_value .= is_numeric($is_closed) ? " AND tbsupport.IsClosed = $is_closed " : "" ;
     $order_by = !empty($order_by) ? "ORDER BY $order_by " : "";
@@ -33,7 +33,7 @@ class M_company_staff extends CI_Model{
     FROM tbcompanystaff
     INNER JOIN tbuser ON tbuser.Code = tbcompanystaff.CompanyCode
     WHERE".$filter_value.$order_by;
-    //echo $query;exit();
+    // echo $query;exit();
     $query = $this->db->query($query);
     return $query;
   }

@@ -107,9 +107,9 @@ class Company_staff extends CI_Controller{
     $staff_id = $this->M_company_staff->add_company_staff($data);
     $this->email->from('marketplacesilver@gmail.com', 'marketplacesilver');
       $this->email->to($this->input->post('company_staff_email'));
-      $this->email->subject('SIDAN Account Confirmation');
+      $this->email->subject('SIDAN Company Staff Account Verification');
       $this->email->message("<a href='".base_url().
-      "index.php/Company_staff/new_staff_update_password/".$staff_id.
+      "index.php/Registration/new_company_staff_verification_view/".$staff_id.
       "'>Confirm Your Account</a>");
       $this->email->set_newline("\r\n");
     $this->email->send();

@@ -9,7 +9,7 @@ class Registration extends CI_Controller{
     /* Load the libraries and helpers */
     $this->load->library(array('form_validation','email'));
     $this->load->helper(array('form', 'captcha','url'));
-    $this->load->model(array('M_user'));
+      $this->load->model(array('M_user','M_company_staff'));
   }
   public function registration_view(){
     $this->load->view('frontend/partials/header');
@@ -41,12 +41,36 @@ class Registration extends CI_Controller{
      $this->email->set_newline("\r\n");
    $this->email->send();
   }
-
+  function new_company_staff_verification_view($staff_id){
+    $filter_value = array('company_staff_id' => $staff_id);
+    $get_company_staff = $this->M_company_staff->get_company_staff($filter_value);
+    $data['user'] = $get_company_staff->result();
+    //print_r($data);exit();
+    $this->load->view('frontend/new_company_staff_verification',$data);
+  }
   function new_company_verification_view($user_code){
     $filter_value = array('user_code' => $user_code);
     $get_user = $this->M_user->get_user($filter_value);
     $data['user'] = $get_user->result();
     $this->load->view('frontend/new_company_verification',$data);
+  }
+  function verify_company_staff_account(){
+    $company_staff_id = $this->input->post('company_staff_id');
+    if ($this->input->post('password') == $this->input->post('c_password')) {
+      $password = $this->input->post('password');
+      $data = array(
+        'PhoneNumber' => $this->input->post('phone_number'),
+        'FirstName' => $this->input->post('first_name'),
+        'LastName' => $this->input->post('last_name'),
+        'Password' => sha1($password),
+        'IsVerified' => 1
+      );
+      $this->M_company_staff->edit_company_staff($data,$company_staff_id);
+      $this->session->set_userdata('company_staff_id',$company_staff_id);
+      $this->session->set_userdata('first_name',$this->input->post('first_name'));
+      //$this->session->set_userdata('profile_image',$user_row->ProfileImage);
+      redirect('Company_staff/company_staff_dashboard_view');
+    }
   }
   function verify_company_account(){
     $code = $this->input->post('company_code');
@@ -66,10 +90,6 @@ class Registration extends CI_Controller{
 			//$this->session->set_userdata('profile_image',$user_row->ProfileImage);
 			redirect('User/company_dashboard_view');
     }
-
-
-
-
   }
 
 }
