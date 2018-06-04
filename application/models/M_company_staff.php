@@ -33,7 +33,7 @@ class M_company_staff extends CI_Model{
     FROM tbcompanystaff
     INNER JOIN tbuser ON tbuser.Code = tbcompanystaff.CompanyCode
     WHERE".$filter_value.$order_by;
-    //echo $query;exit();
+    // echo $query;exit();
     $query = $this->db->query($query);
     return $query;
   }

@@ -124,6 +124,98 @@ function get_unserved_service($theCode){
     // tidak boleh reload
     //redesign
   }
+
+  function staff_service_list_view()
+  {
+    $head_data['page_title'] = "Sidan";
+    $this->load->view('template/back_page/company_staff/head',$head_data);
+    $this->load->view('template/back_page/company_staff/navigation');
+    $this->load->view('template/back_page/company_staff/sidebar');
+    $this->load->view('back_page/service/staff_service_list');
+    $this->load->view('template/back_page/company_staff/foot');
+  }
+
+   function get_staff_service_json() {
+
+    $company_staff_id = $this->session->userdata('company_staff_id');
+    $filter_value = array('company_staff_id' => $company_staff_id);
+    $get_service = $this->M_service->get_service($filter_value, 'tbservice.StartTime DESC');
+    //print_r($get_support->row());exit();
+    $baris = $get_service->result();
+    $data = array();
+    foreach ($baris as $bar) {
+      // $is_active = ($bar->IsActive == 1) ? "Active" : "Not Active" ;
+      $row = array(
+      "TicketCode" => $bar->TicketCode,
+      "ServiceCategoryName" => $bar->ServiceCategoryName,
+      "CustomerEmail" => $bar->CustomerEmail,
+      "CustomerName" => $bar->CustomerName,
+      "PhoneNumber" => $bar->PhoneNumber,
+      "StartTime" => $bar->StartTime,
+      "EndTime" => $bar->EndTime,
+      "IsPresent" => $bar->IsPresent
+      // "EditButton" => "<a class='btn btn-info' href=".base_url('index.php/Service_category/service_category_edit_view/').$bar->Code.">Edit
+      // <span class='fa fa-fw fa-eye' >
+      // </span>
+      // </a>"
+      );
+      $data[] = $row;
+    }
+    $output = array(
+      "draw" => 0,
+      "recordsTotal" => $get_service->num_rows(),
+      "recordsFiltered" => $get_service->num_rows(),
+      "data" => $data
+    );
+    echo json_encode($output);
+  }
+
+  function company_service_list_view()
+  {
+    $head_data['page_title'] = "Sidan";
+    $this->load->view('template/back_page/company/head',$head_data);
+    $this->load->view('template/back_page/company/navigation');
+    $this->load->view('template/back_page/company/sidebar');
+    $this->load->view('back_page/service/company_service_list');
+    $this->load->view('template/back_page/company/foot');
+  }
+
+   function get_company_service_json() {
+
+    $company_code = $this->session->userdata('company_code');
+    $filter_value = array('company_code' => $company_code);
+    $get_service = $this->M_service->get_service($filter_value, 'tbservice.StartTime DESC');
+    //print_r($get_support->row());exit();
+    $baris = $get_service->result();
+    $data = array();
+    foreach ($baris as $bar) {
+      // $is_active = ($bar->IsActive == 1) ? "Active" : "Not Active" ;
+      $row = array(
+      "TicketCode" => $bar->TicketCode,
+      "ServiceCategoryName" => $bar->ServiceCategoryName,
+      "CustomerEmail" => $bar->CustomerEmail,
+      "CustomerName" => $bar->CustomerName,
+      "PhoneNumber" => $bar->PhoneNumber,
+      "StartTime" => $bar->StartTime,
+      "EndTime" => $bar->EndTime,
+      "IsPresent" => $bar->IsPresent
+      // "EditButton" => "<a class='btn btn-info' href=".base_url('index.php/Service_category/service_category_edit_view/').$bar->Code.">Edit
+      // <span class='fa fa-fw fa-eye' >
+      // </span>
+      // </a>"
+      );
+      $data[] = $row;
+    }
+    $output = array(
+      "draw" => 0,
+      "recordsTotal" => $get_service->num_rows(),
+      "recordsFiltered" => $get_service->num_rows(),
+      "data" => $data
+    );
+    echo json_encode($output);
+  }
+
+
 }
 
  ?>

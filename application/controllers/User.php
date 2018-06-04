@@ -199,11 +199,50 @@ public function edit_company_profile(){
     echo json_encode($output);
   }
 
+   function staff_change_password_view()
+  {
+    $head_data['page_title'] = "Sidan";
+    $this->load->view('template/back_page/company_staff/head',$head_data);
+    $this->load->view('template/back_page/company_staff/navigation');
+    $this->load->view('template/back_page/company_staff/sidebar');
+    $this->load->view('back_page/company_staff/company_staff_change_password');
+    $this->load->view('template/back_page/company_staff/foot');
+  }
 
+  function staff_change_password(){
+    $company_staff_id = $this->session->userdata('company_staff_id');
+    $data = array(
+      // 'Id' => $company_staff_id,
+      'OldPassword' => sha1($this->input->post('company_staff_old_password')),
+      'NewPassword' => sha1($this->input->post('company_staff_new_password')),
+      'ConfirmPassword' => sha1($this->input->post('company_staff_confirm_password'))
+    );
 
+    $staff_old_password = $data['OldPassword'];
+    // echo $staff_old_password; exit();
 
+    // mengambil password staff dari database
+    $company_staff_id = $this->session->userdata('company_staff_id');
+    $filter_value = array('company_staff_id' => $company_staff_id);
+    $get_staff = $this->M_company_staff->get_company_staff($filter_value);
+    $staff_row = $get_staff->row();
+    $db_staff_old_password = $staff_row->Password;
+    // echo "----";
+    // echo $staff_old_password; exit();
 
-
+    if ($staff_old_password == $db_staff_old_password) {
+      if ($data['NewPassword'] == $data['ConfirmPassword']) {
+        $data = array('Password' => sha1($this->input->post('company_staff_new_password')) );
+        $this->M_company_staff->edit_company_staff($data,$company_staff_id) ;
+        echo "Ntap Jiwa"; exit();
+      } else {
+        echo "New dan Confirm Password sing nyak patuh"; exit();
+      }
+    } else {
+      echo "Password lama anda salah"; exit();
+    }
+    redirect('company_staff/company_staff_list_view');
+  }
 
 }
 

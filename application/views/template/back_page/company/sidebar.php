@@ -47,7 +47,11 @@
         </li> -->
         <li><a href="<?php echo base_url().'index.php/user/company_dashboard_view' ?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
         <li><a href="<?php echo base_url().'index.php/Service_category/service_category_list_view' ?>"><i class="glyphicon glyphicon-th-list"></i><span>Service Category</span></a></li>
+
         <li><a href="<?php echo base_url().'index.php/company_staff/company_staff_list_view' ?>"><i class="glyphicon glyphicon-th-list"></i><span >Company Staff</span></a></li>
+
+        <li><a href="<?php echo base_url().'index.php/service/company_service_list_view' ?>"><i class="glyphicon glyphicon-th-list"></i><span >Service List</span></a></li>
+
         <li><a href="<?php echo base_url().'index.php/User/edit_company_profile_view' ?>"><i class="glyphicon glyphicon-th-list"></i> <span>Profile</span></a></li>
 
         <!-- <li><a href="<?php //echo base_url().'index.php/Support/member_support_list_view' ?>"><i class="glyphicon glyphicon-phone-alt"></i> <span>Support List</span></a></li> -->

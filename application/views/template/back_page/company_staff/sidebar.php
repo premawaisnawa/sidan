@@ -47,6 +47,7 @@
         </li> -->
         <li><a href="<?php echo base_url().'index.php/company_staff/company_staff_dashboard_view' ?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
         <li><a href="<?php echo base_url().'index.php/service_category/staff_service_category_list_view' ?>"><i class="glyphicon glyphicon-th-list"></i><span>Service Category</span></a></li>
+         <li><a href="<?php echo base_url().'index.php/service/staff_service_list_view' ?>"><i class="glyphicon glyphicon-th-list"></i><span>Service List</span></a></li>
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>My Account</span>
@@ -56,7 +57,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'index.php/user/edit_company_staff_profile_view' ?>"><i class="glyphicon glyphicon-th-list"></i><span > Profile</span></a></li>
-            <li ><a href="index.html"><i class="fa fa-circle-o"></i> Password</a></li>
+            <li ><a href="<?php echo base_url().'index.php/user/staff_change_password_view' ?>"><i class="fa fa-circle-o"></i> Password</a></li>
 
           </ul>
         </li>
