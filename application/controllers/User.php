@@ -6,7 +6,7 @@ class User extends CI_Controller{
     parent::__construct();
     $this->load->library(array('form_validation','pagination'));
     $this->load->helper(array('form', 'url'));
-    $this->load->model(array('M_user','M_company_staff'));
+    $this->load->model(array('M_user','M_company_staff','M_service','M_service_category'));
   }
 
   function company_staff_profile_view()
@@ -30,14 +30,16 @@ class User extends CI_Controller{
   }
 
   function company_dashboard_view(){
-    // $id_admin = $this->session->userdata('id_admin');
-    // if (empty($id_admin)) {
-    //   redirect('Home/home_view');
-    // }
+    $company_code = $this->session->userdata('company_code');
+    $filter_value = array('company_code' => $company_code);
+    $get_service_category = $this->M_service_category->get_service_category($filter_value);
+    //print_r($get_support->row());exit();
+    $data['service_category'] = $get_service_category->result();
+
     $this->load->view('template/back_page/company/head');
     $this->load->view('template/back_page/company/navigation');
     $this->load->view('template/back_page/company/sidebar');
-    $this->load->view('back_page/company_dashboard');
+    $this->load->view('back_page/company_dashboard',$data);
     $this->load->view('template/back_page/company/foot');
   }
 
