@@ -121,7 +121,7 @@
     <h2 class="text-center my-5"><span class="mr-2"><i class="fa fa-user-secret"></i></span>About The Creators</h2>
     <div class="card-deck wow fadeInUp">
         <div class="card mx-5 sidan-shadow">
-            <p class="h4 text-center font-italic font-weight-bold mt-3">Project Manager</p>
+            <p class="h4 text-center font-italic font-weight-bold mt-3"></p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
                  src="<?php echo base_url()?>public/images/prema.jpg" alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
@@ -135,7 +135,7 @@
             </div>
         </div>
         <div class="card mx-5 sidan-shadow">
-            <p class="h4 text-center font-italic font-weight-bold mt-4">System Analyst</p>
+            <p class="h4 text-center font-italic font-weight-bold mt-4"></p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
                  src="<?php echo base_url()?>public/images/budi.JPG"
                  alt="Card image cap">
@@ -150,7 +150,7 @@
             </div>
         </div>
         <div class="card mx-5 sidan-shadow">
-            <p class="h4 text-center font-italic font-weight-bold mt-3">Designer</p>
+            <p class="h4 text-center font-italic font-weight-bold mt-3"></p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
                  src="<?php echo base_url()?>public/images/nugi.jpg" alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
@@ -167,7 +167,7 @@
     <br><br>
     <div class="card-deck wow fadeInUp">
         <div class="card mx-5 sidan-shadow">
-            <p class="h4 text-center font-italic font-weight-bold mt-3">Programmer</p>
+            <p class="h4 text-center font-italic font-weight-bold mt-3"></p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
                  src="<?php echo base_url()?>public/images/edi.jpg" alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
@@ -181,9 +181,9 @@
             </div>
         </div>
         <div class="card mx-5 sidan-shadow">
-            <p class="h4 text-center font-italic font-weight-bold mt-3">Documenter</p>
+            <p class="h4 text-center font-italic font-weight-bold mt-3"></p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
-                 src="<?php echo base_url()?>public/images/budi.JPG"
+                 src="<?php echo base_url()?>assets/pic_file/agus.jpeg"
                  alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">
                 <h5 class="card-title text-center font-weight-bold">Kadek Agus Widnyana Putra</h5>
@@ -196,7 +196,7 @@
             </div>
         </div>
         <div class="card mx-5 sidan-shadow">
-            <p class="h4 text-center font-italic font-weight-bold mt-3">Tester</p>
+            <p class="h4 text-center font-italic font-weight-bold mt-3"></p>
             <img height="160px" width="160px" class="mx-auto rounded-circle sidan-img-index"
                  src="<?php echo base_url()?>public/images/alex.jpg" alt="Card image cap">
             <div class="card-body sidan-actors-mp sidan-blue text-white">

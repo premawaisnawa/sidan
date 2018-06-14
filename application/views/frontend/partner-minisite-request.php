@@ -42,17 +42,19 @@
     <div class="wow fadeInUp">
         <div class="row my-3 mx-4 mx-lg-0">
             <?php $i = 1; foreach($service_category as $sc){ ?>
-            <div class="col-md-3 mx-auto rounded sidan-shadow px-5 py-3">
-                <img class="img-fluid w-100" src="<?php echo base_url().'assets/pic_file/'.$sc->ServiceCategoryImage?>">
+
+            <div class="col-md-3 mx-auto rounded  px-5 py-3">
+                <img class="img-fluid w-100" src="<?php echo base_url().'assets/pic_file/queue.jpg';?>">
             </div>
-            <button class="btn btn-dark text-white d-lg-none d-inline mx-auto" data-toggle="modal" data-target="#exampleModalCenter" onclick="setHiddenValue('<?php echo $sc->Code; ?>')"><i
+            <!-- <button class="btn btn-dark text-white d-lg-none d-inline mx-auto" data-toggle="modal" data-target="#exampleModalCenter" onclick="setHiddenValue('<?php echo $sc->Code; ?>')"><i
                         class="fa fa-send mr-2"></i>Ambil
-            </button>
+            </button> -->
             <?php } ?>
         </div>
         <div class="d-flex justify-content-around align-items-center my-3">
           <?php $i = 1; foreach($service_category as $sc){ ?>
             <div class="w-25 text-center d-none d-lg-block">
+              <h3><?php echo $sc->ServiceCategoryName;?></h3>
                 <button class="btn btn-dark text-white" data-toggle="modal" data-target="#exampleModalCenter" onclick="setHiddenValue('<?php echo $sc->Code; ?>')"><i
                             class="fa fa-send mr-2"></i>Ambil
                 </button>

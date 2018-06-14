@@ -3,7 +3,9 @@
         <div class="card border-dark mb-3 mx-auto w-50 sidan-shadow">
             <div class="card-header bg-success"></div>
             <div class="card-body text-dark">
-                <h5 class="card-title">Silahkan lengkapi form di bawah ini</h5>
+              <p class="text-center"><img src="<?php  echo base_url().'assets/pic_file/SIDAN LOGO 2 Trans.png';
+                      ?>" height="100" class="" alt="User Image"></p>
+                <h5 class="card-title text-center">Silahkan lengkapi form di bawah ini</h5>
                 <form method="post" action="<?php echo base_url().'index.php/Registration/add_user'; ?>">
                   <div class="form-group">
                     <label for="phone_number">Phone Number</label>

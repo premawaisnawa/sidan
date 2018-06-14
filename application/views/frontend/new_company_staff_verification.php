@@ -26,7 +26,8 @@
             <div class="card border-dark mb-3 w-100 sidan-shadow">
                 <div class="card-header sidan-blue"></div>
                 <div class="card-body text-dark">
-                    <h4 class="text-center">SIDAN</h4>
+                  <h4 class="text-center"><img src="<?php  echo base_url().'assets/pic_file/SIDAN LOGO 2 Trans.png';
+                          ?>" height="125" class="" alt="User Image"></h4>
                     <h5 class="card-title text-center">Verifikasi Akun Company Staff</h5>
                     <form class=""
                           action="<?php echo base_url() . 'index.php/Registration/verify_company_staff_account'; ?>"

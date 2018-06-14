@@ -27,6 +27,7 @@
                     <th class="text-center">Start Time</th>
                     <th class="text-center">End Time</th>
                     <th class="text-center">Is Present</th>
+                    <th class="text-center">Rating</th>
                   </tr>
               </thead>
               <tbody class="text-center">
@@ -70,7 +71,8 @@ $(document).ready(function() {
       {"data": "PhoneNumber"},
       {"data": "StartTime"},
       {"data": "EndTime"},
-      {"data": "IsPresent"}
+      {"data": "IsPresent"},
+      {"data": "Rating"}
     ],
 
   });

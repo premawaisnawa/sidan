@@ -4,8 +4,9 @@
             <div class="card border-dark mb-3 w-100 sidan-shadow">
                 <div class="card-header sidan-blue"></div>
                 <div class="card-body text-dark">
-                    <p class="text-center"><span class="display-3"><i class="fa fa-user-circle-o"></i></span></p>
-                    <h4 class="text-center">SIDAN</h4>
+                    <p class="text-center"><img src="<?php  echo base_url().'assets/pic_file/SIDAN LOGO 2 Trans.png';
+                            ?>" height="100" class="" alt="User Image"></p>
+
                     <h5 class="card-title text-center">Selamat datang, silahkan Login</h5>
                     <form class="mt-4" method="post" action="<?php echo base_url().'index.php/Login/login'; ?>">
                         <div class="form-group">

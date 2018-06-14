@@ -18,14 +18,26 @@ class User extends CI_Controller{
     $this->load->view('back_page/profile_account/company_staff_profile');
     $this->load->view('template/back_page/company_staff/foot');
   }
-  function company_mini_site_view(){
+  function company_mini_site_view($user_code){
+
+    $filter_value = array('user_code' => $user_code);
+    $get_user = $this->M_user->get_user($filter_value);
+    $data['user'] = $get_user->result();
+
+    $filter_value = array('company_code' => $user_code);
+    $get_service_category = $this->M_service_category->get_service_category($filter_value, 'ServiceCategoryName DESC');
+    //print_r($get_support->row());exit();
+    $data['service_category'] = $get_service_category->result();
     $this->load->view('frontend/partials/header');
-    $this->load->view('frontend/partner-minisite');
+    $this->load->view('frontend/partner-minisite',$data);
     $this->load->view('frontend/partials/footer');
   }
   function public_company_list_view(){
+    $filter_value = array('level_user' => 1);
+    $get_user = $this->M_user->get_user($filter_value);
+    $data['user'] = $get_user->result();
     $this->load->view('frontend/partials/header');
-    $this->load->view('frontend/partner');
+    $this->load->view('frontend/partner',$data);
     $this->load->view('frontend/partials/footer');
   }
 
@@ -33,9 +45,10 @@ class User extends CI_Controller{
     $company_code = $this->session->userdata('company_code');
     $date = $this->M_date->get_date_sql_format();
     $filter_value = array('company_code' => $company_code, 'start_time'=> $date, 'is_served'=> 0);
-    $get_service = $this->M_service->get_service($filter_value,"","","GROUP BY tbservice.ServiceCategoryCode ",'COUNT(tbservice.Code)AS JumlahAntrian,');
-    //print_r($get_support->row());exit();
+    $get_service = $this->M_service->get_service($filter_value,"","","GROUP BY tbservice.ServiceCategoryCode ",'COUNT(tbservice.Code)AS JumlahAntrian,',1);
+
     $data['service'] = $get_service->result();
+    //print_r($data['service']);exit();
     $filter_value_sc = array('company_code' => $company_code);
     $get_service_category = $this->M_service_category->get_service_category($filter_value_sc, 'ServiceCategoryName DESC');
     //print_r($get_support->row());exit();

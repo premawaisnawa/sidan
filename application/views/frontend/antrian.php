@@ -1,12 +1,13 @@
 <section class="my-5 container">
     <div class="row">
         <div class="col-md-2">
-            <img class="img-fluid" src="public/images/telkomsel.png">
+          <img src="<?php  echo base_url().'assets/pic_file/SIDAN LOGO 2 Trans.png';
+                  ?>" height="125" class="" alt="User Image">
         </div>
-        <div class="col-md-2 my-3">
-            <p class="font-weight-bold">Username : Test</p>
-            <p class="font-weight-bold">Category : Grapari</p>
-            <p class="font-weight-bold">No. Antrian : A03</p>
+        <div class="col-md-6 my-3">
+            <p class="font-weight-bold"><b>Email : </b><?php echo $customer[0]->CustomerEmail; ?></p></p>
+            <p class="font-weight-bold"><b>Category : </b><?php echo $queue[0]->ServiceCategoryName; ?></p>
+            <p class="font-weight-bold"><b>Ticket Code : </b><?php echo $customer[0]->TicketCode; ?></p></p>
         </div>
     </div>
     <br>
@@ -26,35 +27,40 @@
             <table class="table table-hover">
                 <thead>
                 <tr class="text-center">
-                    <th scope="col">No</th>
-                    <th scope="col">No. Antrian</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Tanggal</th>
+
+                    <th scope="col">Ticket Code</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Start Time</th>
                 </tr>
                 </thead>
                 <tbody class="text-center">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>A01</td>
-                    <td>Budiman</td>
-                    <td>2018-06-01, 03:00 PM</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>A02</td>
-                    <td>Kade Prema Waisnawa</td>
-                    <td>2018-06-01, 04:00 PM</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>A03</td>
-                    <td>Nugie Nugraha</td>
-                    <td>2018-06-01, 05:00 PM</td>
-                </tr>
+                  <?php foreach ($queue as $q ): ?>
+
+                      <?php if ($q->Code == $customer[0]->Code): ?>
+                          <tr>
+                        <td><b><?php echo $q->TicketCode; ?></b></td>
+                        <td><b><?php echo $q->CustomerEmail; ?></b></td>
+                        <td><b><?php echo $q->StartTime; ?></b></td>
+                        </tr>
+                      <?php else: ?>
+                        <tr>
+
+
+                        <td><?php echo $q->TicketCode; ?></td>
+                        <td><?php echo $q->CustomerEmail; ?></td>
+                        <td><?php echo $q->StartTime; ?></td>
+                        </tr>
+                      <?php endif; ?>
+
+
+
+
+
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
-        <div class="col-md-12 mt-4">
+        <!-- <div class="col-md-12 mt-4">
             <nav aria-label="...">
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
@@ -73,6 +79,6 @@
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div> -->
     </div>
 </section>

@@ -36,7 +36,7 @@ function get_unserved_service($theCode){
   $service_category_code = $theCode;
   $date = $this->M_date->get_date_sql_format();
   $filter_value = array("start_time" => $date, "service_category_code" => $service_category_code, "is_served" => 0);
-  $get_service = $this->M_service->get_service($filter_value,"tbservice.StartTime ASC",1);
+  $get_service = $this->M_service->get_service($filter_value,"tbservice.StartTime ASC",1,"","",1);
   $bar = $get_service->row();
   // __________disini code update serviceCode
   $data = array('IsServed' => 1 , 'EndTime' =>$this->M_date->get_datetime_sql_format());
@@ -54,7 +54,20 @@ function get_unserved_service($theCode){
   //}
   echo json_encode($row);
 }
-
+  function customer_queue_view($service_code)
+  {
+    $filter_value = array('service_code' => $service_code);
+    $get_service_a = $this->M_service->get_service_x($filter_value);
+    $row = $get_service_a->row();
+    $data['customer'] = $get_service_a->result();
+    $service_category_code = $row->ServiceCategoryCode;
+    $filter_value = array('service_category_code' => $service_category_code, 'is_served' => 0,"start_time" => $this->M_date->get_date_sql_format());
+    $get_service = $this->M_service->get_service_x($filter_value, 'tbservice.StartTime ASC');
+    $data['queue'] = $get_service->result();
+    $this->load->view('frontend/partials/header');
+    $this->load->view('frontend/antrian',$data);
+    $this->load->view('frontend/partials/footer');
+  }
   function add_service()
   {
     $service_code = $this->input->post('service_code');
@@ -73,7 +86,7 @@ function get_unserved_service($theCode){
       $this->email->subject('SIDAN Service Review');
       $this->email->message("<a href='".base_url().
       "index.php/Service/add_service_review_view/".$service_code.
-      "'>RaTE Use</a>");
+      "'>Rate Us</a>");
       $this->email->set_newline("\r\n");
     $this->email->send();
     redirect('Service/add_service_view/'.$service_category_code);
@@ -95,7 +108,7 @@ function get_unserved_service($theCode){
     $service_category_code = $this->input->post('service_category_code');
     $filter_value = array("start_time" => $this->M_date->get_date_sql_format(),
     "service_category_code" => $service_category_code);
-    $get_service = $this->M_service->get_service($filter_value);
+    $get_service = $this->M_service->get_service_x($filter_value);
     $service_num_rows = $get_service->num_rows();
     $urutan = $service_num_rows + 1;
     if ($urutan < 10) {
@@ -103,7 +116,7 @@ function get_unserved_service($theCode){
     }elseif ($urutan > 9 AND $urutan < 100) {
       $urutan = "0".$urutan;
     }
-    $service_code = $service_category_code."|".$this->M_date->get_date_sql_format()."|".$urutan;
+    $service_code = $service_category_code."X".$this->M_date->get_date_sql_format()."X".$urutan;
     $ticket_code = $service_category_code.$urutan;
     //echo $service_code."<br>".$ticket_code;exit();
     $data = array(
@@ -116,20 +129,21 @@ function get_unserved_service($theCode){
       "StartTime" => $this->M_date->get_datetime_sql_format()
     );
     $this->M_service->add_service($data);
-    $filter_value = array("service_code" => $service_code);
-    $get_service = $this->M_service->get_service($filter_value);
-    $data['service'] = $get_service->result();
+    $filter_values = array("service_code" => $service_code);
+    $get_service = $this->M_service->get_service_x($filter_values);
+    $datas['service'] = $get_service->result();
+    //print_r($datas['service']);exit();
     // ________email
     $this->email->from('marketplacesilver@gmail.com', 'marketplacesilver');
       $this->email->to($this->input->post('email'));
       $this->email->subject('SIDAN Reques Ticket');
-      $this->email->message($ticket_code.'<br>'."<a href='".base_url().
-      "_".
-      "'>Check Your Queue</a>");
+      $this->email->message($ticket_code.'<br>'."<a href='" . base_url() .
+          "index.php/Service/customer_queue_view/" .$service_code.
+          "'>Verify Your Account</a>");
       $this->email->set_newline("\r\n");
     $this->email->send();
     //email
-    $this->load->view('frontend/request_ticket_success',$data);
+    $this->load->view('frontend/request_ticket_success',$datas);
     // tidak boleh reload
     //redesign
   }
@@ -162,7 +176,8 @@ function get_unserved_service($theCode){
       "PhoneNumber" => $bar->PhoneNumber,
       "StartTime" => $bar->StartTime,
       "EndTime" => $bar->EndTime,
-      "IsPresent" => $bar->IsPresent
+      "IsPresent" => $bar->IsPresent,
+      "Rating" => $bar->ServiceRating,
       // "EditButton" => "<a class='btn btn-info' href=".base_url('index.php/Service_category/service_category_edit_view/').$bar->Code.">Edit
       // <span class='fa fa-fw fa-eye' >
       // </span>

@@ -42,12 +42,8 @@
 
         </div>
         <div class="icon">
-          <img src="<?php if (empty($this->session->userdata('profile_image')) OR $this->session->userdata('profile_image') == "") {
-                        echo base_url().'assets/icon/upload-icon.png';
-                    }else{
-                        echo base_url().'assets/pic_file/'.$this->session->userdata('profile_image');
-
-                    }?>" height="75" class="img-circle" alt="User Image">
+          <img src="<?php  echo base_url().'assets/pic_file/queue.jpg';
+                  ?>" height="75" class="img-circle" alt="User Image">
         </div>
         <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
       </div>

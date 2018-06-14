@@ -46,6 +46,7 @@ class Registration extends CI_Controller {
             "'>Verify Your Account</a>");
         $this->email->set_newline("\r\n");
         $this->email->send();
+        redirect('Home');
     }
 
     function new_company_staff_verification_view($staff_id)
